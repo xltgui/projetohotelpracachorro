@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,11 +18,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(length = 1000, nullable = false)
     private String nome;
     private String CPF;
     private String telefone;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Cachorro> listaCachorros = new ArrayList<>();
+
 
     public long getId() {
         return id;
@@ -46,11 +47,5 @@ public class Cliente {
     }
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-    public List<Cachorro> getListaCachorros() {
-        return listaCachorros;
-    }
-    public void setListaCachorros(List<Cachorro> listaCachorros) {
-        this.listaCachorros = listaCachorros;
     }
 }
