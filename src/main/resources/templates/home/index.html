@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <header th:replace="layout :: menu"></header>
+
+    <main class="container">
+        <section>
+            <div>
+                <h1>Lorem ipsum dolor sit!</h1>
+                <p>Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. </p>
+                <p> Per aumento de cachacis, eu reclamis. Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.</p>
+                <a class="text-decoration-none btn-reserva" href="#reserva">fazer reserva</a>
+            </div>
+            <img th:src="@{/img/beagle.png}" width="250" alt="filhote de cachorro da raça beagle">
+        </section>
+
+        <section id="reserva">
+            <h1>Selecione o porte do seu cachorro para fazer a reserva</h1>
+
+            <div class="d-flex">
+                <div>
+                    <h3 class="text-center">porte <br> pequeno</h3>
+                    <div></div>
+                </div> <!-- background image url *raça tal* -->
+                <div>
+                    <h3 class="text-center">porte <br> médio</h3>
+                    <div></div>
+                </div>
+                <div>
+                    <h3 class="text-center">porte <br> grande</h3>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="adicionais"></section>
+
+        <section id="avaliacoes">
+            <img class="d-block mx-auto" th:src="@{/img/icones/dog-certificate-quality.png}" alt="">
+
+            <div>
+                <h1>Saiba o que acham da nossa equipe!</h1>
+
+                <div>
+                    <div>
+                        <h2>Júlia</h2>
+                        <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="">
+                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
+                        <div><!-- estrelinhas --></div>
+                    </div>
+
+                    <div>
+                        <h2>Flávia</h2>
+                        <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="">
+                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
+                        <div><!-- estrelinhas --></div>
+                    </div>
+
+                    <div>
+                        <h2>Roberto</h2>
+                        <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="">
+                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
+                        <div><!-- estrelinhas --></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer th:include="layout :: footer"></footer>
+
+    <div th:include="layout :: imports"></div>
+</body>
+
+</html>
