@@ -20,8 +20,6 @@ public class Cachorro {
 
     private float peso;
     
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
-    private Cliente tutor;
 
     public long getId() {
         return id;
@@ -46,15 +44,5 @@ public class Cachorro {
     public void setPeso(float peso) {
         this.peso = peso;
     }
-
-    public Cliente getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(Cliente tutor) {
-        this.tutor = tutor;
-    }
-
-    
 
 }

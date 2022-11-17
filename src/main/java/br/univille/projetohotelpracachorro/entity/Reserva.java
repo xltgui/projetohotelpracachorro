@@ -10,10 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.sound.midi.Patch;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -31,12 +31,18 @@ public class Reserva {
     private Date dataSaida;
     
     
-    
+    @OneToOne(cascade = CascadeType.ALL)
     private Cachorro cachorro;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cliente cliente;
+           
+    
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Servicos> listaServicos = new ArrayList<>();
     
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Funcionario atendente;
 
     public float totalReserva(){
         return 0;

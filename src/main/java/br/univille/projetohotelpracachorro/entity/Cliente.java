@@ -23,6 +23,9 @@ public class Cliente {
     private String CPF;
     private String telefone;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Cachorro> listaCachorros = new ArrayList<>();
+
 
     public long getId() {
         return id;

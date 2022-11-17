@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.univille.projetohotelpracachorro.entity.Cliente;
 
 @Repository
-public interface clienteRepository extends JpaRepository<Cliente, Long>
+public interface ClienteRepository extends JpaRepository<Cliente, Long>
 {
     List<Cliente> findByNomeIgnoreCaseContaining(@Param("nome") String nome);
 }
