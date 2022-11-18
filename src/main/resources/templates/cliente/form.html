@@ -8,7 +8,43 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
+        <form th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}">
 
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label for="txtnome">Nome</label>
+                <input type="text" class="form-control" id="txtnome">
+                <p th:if="${#fields.hasErrors('nome')}"
+                th:errors="*{nome}"
+                class="alert alert-danger"></p>
+            </div>
+            
+            <div class="form-group">
+                <label for="txtcpf">CPF</label>
+                <input type="text" class="form-control" id="txtcpf">
+            </div>
+
+            <div class="form-group">
+                <label for="txtfone">Telefone</label>
+                <input type="text" class="form-control" id="txtfone" th:field="*{telefone}">
+                <p th:if="${#fields.hasErrors('telefone')}"
+                th:errors="*{sexo}"
+                class="alert alert-danger"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Cachorros</label>
+                <select class="form-select" th:field="*{listaCachorros}">
+                    <option th:each="umCachorro : ${listaCachorros}"
+                    th:text="${umCachorro.nome}"
+                    th:value="${umCachorro.id}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+
+        </form>
     </main>
     <footer th:include="layout :: footer"></footer>
 </body>

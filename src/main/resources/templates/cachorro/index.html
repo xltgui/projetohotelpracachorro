@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+        <a href="/cachorros/novo" class="btn btn-primary">Novo</a>
+        <table class="table" id="tabcachorros">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Peso</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="umCachorro : ${listaCachorros}">
+                    <td th:text="${umCachorro.id}"></td>
+                    <td th:text="${umCachorro.nome}"></td>
+                    <td th:text="${umCachorro.peso}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer th:include="layout :: footer"></footer>
+</body>
+
+</html>

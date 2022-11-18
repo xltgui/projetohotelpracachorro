@@ -42,6 +42,12 @@ public class Cliente {
     public String getCPF() {
         return CPF;
     }
+    public List<Cachorro> getListaCachorros() {
+        return listaCachorros;
+    }
+    public void setListaCachorros(List<Cachorro> listaCachorros) {
+        this.listaCachorros = listaCachorros;
+    }
     public void setCPF(String cPF) {
         CPF = cPF;
     }
