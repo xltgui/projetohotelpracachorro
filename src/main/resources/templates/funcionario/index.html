@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+    <a href="/funcionarios/novo" class="btn btn-primary">novo</a>
+    <table class="table" id="tabfuncionarios">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Função</th>
+                <th>Avaliação</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="umFuncionario : ${listaCachorros}">
+                <td th:text="${umFuncionario.id}"></td>
+                <td th:text="${umFuncionario.nome}"></td>
+                <td th:text="${umFuncionario.funcao}"></td>
+                <td th:text="${umFuncionario.avaliacao}"></td>
+                <td>
+                    <a th:href="@{'/funcionarios/alterar/' + ${funcionario.id}}" class="btn btn-warning">Alterar</a>
+                <button class="btn btn-danger js-delete" th:data-id="${funcionario.id}">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </main>
+    <footer th:include="layout :: footer"></footer>
+</body>
+
+</html>

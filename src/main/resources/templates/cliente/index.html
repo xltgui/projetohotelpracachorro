@@ -23,16 +23,44 @@
             
             <tbody>
                 <tr th:each="cliente : ${listaClientes}">
-                    <td th:text="${cliente.Id}"></td>
+                    <td th:text="${cliente.id}"></td>
                     <td th:text="${cliente.nome}"></td>
-                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.CPF}"></td>
                     <td th:text="${cliente.telefone}"></td>
-                    <td></td>
+                    <td>
+                      <ul th:each="umcachorro : ${cliente.listaCachorros}">
+                        <li th:text="${umcachorro.nome}"></li>
+                      </ul>
+                    </td>
+                    <td>
+                        <a th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn btn-warning">Alterar</a>
+                <button class="btn btn-danger js-delete" th:data-id="${cliente.id}">Excluir</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </main>
+
+    <div class="modal" tabindex="-1" id="modalcliente">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Excluir cliente</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Confirma a exclusão do cliente?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
+              <button type="button" class="btn btn-primary" id="btnClienteSim">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/scriptClientes.js}"></script>
 </body>
 
 </html>

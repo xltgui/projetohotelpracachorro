@@ -24,6 +24,7 @@ public class Cliente {
     private String telefone;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id")
     private List<Cachorro> listaCachorros = new ArrayList<>();
 
 
