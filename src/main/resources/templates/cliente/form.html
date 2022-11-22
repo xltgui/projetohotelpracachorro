@@ -1,88 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
 
-</html>
+	<head th:include="layout :: head"></head>
 
-<head th:include="layout :: head"></head>
+	<body>
+	    <nav th:replace="layout :: menu"></nav>
+	    <main class="container">
+	        <form th:action="@{/clientes/(form)}" 
+	        	method="POST" th:object="${cliente}">
+	
+	            <input type="hidden" th:field="*{id}">
+	
+	            <div class="form-group">
+	                <label for="txtnome">Nome</label>
+	                <input type="text" class="form-control" 
+	                id="txtnome" th:field="*{nome}">
+	            </div>
+	            
+	            <div class="form-group">
+	                <label for="txtcpf">CPF</label>
+	                <input type="text" class="form-control" 
+	                id="txtcpf" th:field="*{CPF}">
+	            </div>
+	
+	            <div class="form-group">
+	                <label for="txtfone">Telefone</label>
+	                <input type="text" class="form-control" id="txtfone" th:field="${cliente.telefone}">
+	                <p th:if="${#fields.hasErrors('telefone')}"
+	                th:errors="${cliente.sexo}"
+	                class="alert alert-danger"></p>
+	            </div>
+	
+	            <div class="card">
+	                <div class="card-body">
+	                    <h5 class="card-body">
+	                        Cachorros vinculados
+	                    </h5>
+	                    <table class="table">
+	                        <thead>
+	                            <tr>
+	                                <th>Nome</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr th:each="umCachorro, stat : ${cliente.listaCachorros}">
+	                                <td th:text="${umCachorro.nomeCachorro}"></td>
+	
+	
+	                                <td>
+	                                    <button class="btn btn-danger" type="submit" name="removecachorro"
+	                                        th:value="__${stat.index}__">Remover</button>
+	                                </td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+	            
+	            <div class="card">
+	                <div class="card-body">
+	                    <h5 class="card-title">
+	                        Novo cachorro
+	                    </h5>
+	
+	                    <div class="form-group">
+	                        <label for="cbcachorro">Cachorro</label>
+	                        <select class="form-select" id="cbcachorro" 
+	                        	th:field="*{novoCachorro}">
+	                            <option th:each="umCachorro : ${listaDisponiveis}"
+		                            th:value="${umCachorro.id}"
+		                            th:text="${umCachorro.nomeCachorro}">
+	                        	</option>
+	                        </select>
+	                    </div>
+	
+	                    <button type="submit" name="vincdog" class="btn btn-primary">Vincular cachorro</button>
+	                </div>
+	            </div>
+	            
+	            <button type="submit" name=save class="btn btn-primary">Enviar</button>
 
-<body>
-    <nav th:replace="layout :: menu"></nav>
-    <main class="container">
-        <form th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}">
-
-            <input type="hidden" th:field="${cliente.id}">
-
-            <div class="form-group">
-                <label for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" th:field="${cliente.nome}">
-                <p th:if="${#fields.hasErrors('nome')}"
-                th:errors="${cliente.nome}"
-                class="alert alert-danger"></p>
-            </div>
-            
-            <div class="form-group">
-                <label for="txtcpf">CPF</label>
-                <input type="text" class="form-control" id="txtcpf" th:field="${cliente.CPF}">
-            </div>
-
-            <div class="form-group">
-                <label for="txtfone">Telefone</label>
-                <input type="text" class="form-control" id="txtfone" th:field="${cliente.telefone}">
-                <p th:if="${#fields.hasErrors('telefone')}"
-                th:errors="${cliente.sexo}"
-                class="alert alert-danger"></p>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-body">
-                        Cachorros vinculados
-                    </h5>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="umCachorro, stat : ${cliente.listaCachorros}">
-                                <td th:text="${umCachorro.nome}"></td>
-                                <input type="hidden" th:field="${cliente.listaCachorros[__${stat.index}__].id}">
-
-                                <td>
-                                    <button class="btn btn-danger" type="submit" name="removecachorro"
-                                        th:value="__${stat.index}__">Remover</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Novo cachorro
-                    </h5>
-
-                    <div class="form-group">
-                        <label for="cbcachorro">Cachorro</label>
-                        <select class="form-select" id="cbcachorro" th:field="${novoCachorro}">
-                            <option th:each="umCachorroNovo : ${listaDisponiveis}" th:value="${umCachorroNovo.id}"
-                            th:text="${umCachorroNovo.nome}">
-                        </option>
-                        </select>
-                    </div>
-
-                    <button type="submit" name="vincdog" class="btn btn-primary">Vincular cachorro</button>
-                </div>
-            </div>
-
-            <button type="submit" name=save class="btn btn-primary">Enviar</button>
-
-        </form>
-    </main>
-    <footer th:include="layout :: footer"></footer>
-</body>
+	        </form>
+	    </main>
+	    <footer th:include="layout :: footer"></footer>
+	</body>
 
 </html>

@@ -12,12 +12,11 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Cachorro {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
-    private String nome;
-
+    private String nomeCachorro;
     private float peso;
     
 
@@ -29,12 +28,12 @@ public class Cachorro {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCachorro() {
+        return nomeCachorro;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCachorro(String nomeCachorro) {
+        this.nomeCachorro = nomeCachorro;
     }
 
     public float getPeso() {

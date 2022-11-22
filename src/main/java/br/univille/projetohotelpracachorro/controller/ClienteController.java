@@ -1,13 +1,10 @@
 package br.univille.projetohotelpracachorro.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
-import javax.validation.Valid;
-
-import org.hibernate.validator.internal.engine.validationcontext.ParameterExecutableValidationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.univille.projetohotelpracachorro.dto.VincClienteCachorroDTO;
 import br.univille.projetohotelpracachorro.entity.Cachorro;
 import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.service.CachorroService;
@@ -38,15 +36,15 @@ public class ClienteController {
 
     @GetMapping("/novo")
     public ModelAndView novo() {
-        var cliente = new Cliente();
-
-        var listaCachorros = cachorroService.getAll();
+        var cliente = new VincClienteCachorroDTO();
+//        VincClienteCachorroDTO novoCachorro = new VincClienteCachorroDTO();
+        
+        List<Cachorro> listaCachorros = cachorroService.getAll();
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("cliente", cliente);
         dados.put("listaDisponiveis", listaCachorros);
-        dados.put("novoCachorro", new Cachorro());
+//        dados.put("novoCachorro", novoCachorro);
         return new ModelAndView("cliente/form", dados);
-
     }
 
     @PostMapping(params = "save")
@@ -56,9 +54,11 @@ public class ClienteController {
     }
 
     @PostMapping(params = "vincdog")
-    public ModelAndView vincularDog(Cliente cliente, Cachorro novoCachorro) {
-        cliente.getListaCachorros().add(novoCachorro);
-
+    public ModelAndView vincularDog(VincClienteCachorroDTO cliente) {
+    	System.out.println();
+        cliente.getListaCachorros().add(cliente.getNovoCachorro());
+        cliente.setNovoCachorro(null);
+ 
         var listaClientes = clienteService.getAll();
         var listaCachorros = cachorroService.getAll();
         HashMap<String, Object> dados = new HashMap<>();

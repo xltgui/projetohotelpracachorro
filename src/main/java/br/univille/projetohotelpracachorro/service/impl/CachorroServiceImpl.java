@@ -41,7 +41,7 @@ public class CachorroServiceImpl implements CachorroService {
 
     @Override
     public List<Cachorro> findByNome(String nome) {
-        return repositorio.findByNomeIgnoreCaseContaining(nome);
+        return repositorio.findByNomeCachorroIgnoreCaseContaining(nome);
     }
 
     
