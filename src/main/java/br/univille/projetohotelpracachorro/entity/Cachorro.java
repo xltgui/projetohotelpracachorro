@@ -14,8 +14,8 @@ import javax.persistence.ManyToOne;
 public class Cachorro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
+    
     private String nome;
 
     private float peso;
