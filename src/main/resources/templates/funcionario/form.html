@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <label for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
+                <input type="text" class="form-control" placeholder="Digite o nome" id="txtnome" th:field="*{nome}">
                 <p th:if="${#fields.hasErrors('nome')}"
                 th:errors="*{nome}"
                 class="alert alert-danger"></p>
@@ -21,12 +21,12 @@
 
             <div class="form-group">
                 <label for="txtfuncao">Função</label>
-                <input type="text" class="form-control" id="txtfuncao" th:field="*{funcao}">
+                <input type="text" class="form-control" placeholder="Digite a função" id="txtfuncao" th:field="*{funcao}">
             </div>
 
             <div class="form-group">
-                <label for="txtavaliacao">Avalicão</label>
-                <input type="number" class="form-control" id="txtavaliacao" th:field="*{avaliacao}">
+                <label for="txtavaliacao">Avaliação</label>
+                <input type="number" class="form-control" id="txtavaliacao" autocomplete="off" th:field="*{avaliacao}" min="1" max="5"/> 
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
             

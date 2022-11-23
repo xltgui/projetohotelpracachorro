@@ -22,10 +22,15 @@ public class Cliente {
     private String nome;
     private String CPF;
     private String telefone;
+    
 
-    @OneToMany(cascade = CascadeType.ALL)
+   
+    @OneToMany(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "cliente_id")
-    private List<Cachorro> listaCachorros = new ArrayList<>();
+    private List<Cachorro> listaCachorros = new ArrayList<>(); 
+    
+    
+    
 
 
     public long getId() {

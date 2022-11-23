@@ -24,9 +24,13 @@ public class ClienteServiceImpl implements ClienteService {
     
     @Override
     public Cliente save(VincClienteCachorroDTO cliente){
-        Cliente novoCliente = new Cliente();
+        Cliente novoCliente = findClienteById(cliente.getId());
+        if(novoCliente == null){
+            novoCliente = new Cliente();
+        }
         novoCliente.setCPF(cliente.getCPF());
-        novoCliente.setListaCachorros(cliente.getListaCachorros());
+        //novoCliente.setListaCachorros(cliente.getListaCachorros());
+        novoCliente.getListaCachorros().addAll(cliente.getListaCachorros());
         novoCliente.setNome(cliente.getNome());
         novoCliente.setTelefone(cliente.getTelefone());
         
@@ -34,12 +38,20 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente findById(long id){
+    public VincClienteCachorroDTO findById(long id){
         var resultado = repositorio.findById(id);
         if(resultado.isPresent()){
-            return resultado.get();
+            var clienteAntigo = resultado.get();
+            VincClienteCachorroDTO cliente = new VincClienteCachorroDTO();
+            cliente.setCPF(clienteAntigo.getCPF());
+            cliente.setId(clienteAntigo.getId());
+            cliente.setListaCachorros(clienteAntigo.getListaCachorros());
+            cliente.setNome(clienteAntigo.getNome());
+            cliente.setTelefone(clienteAntigo.getTelefone());
+            return cliente;
         }
-        return new Cliente();
+        
+        return new VincClienteCachorroDTO();
     }
 
     @Override
@@ -51,5 +63,15 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> findByNome(String nome) {
         return repositorio.findByNomeIgnoreCaseContaining(nome);
+    }
+
+    @Override
+    public Cliente findClienteById(long id) {
+        var resultado = repositorio.findById(id);
+        if(resultado.isPresent()){
+            return resultado.get();
+
+        }
+        return new Cliente();
     }
 }

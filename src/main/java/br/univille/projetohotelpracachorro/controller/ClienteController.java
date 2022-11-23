@@ -49,6 +49,7 @@ public class ClienteController {
 
     @PostMapping(params = "save")
     public ModelAndView save(VincClienteCachorroDTO cliente) {
+        
         clienteService.save(cliente);
         return new ModelAndView("redirect:/clientes");
     }
@@ -80,19 +81,21 @@ public class ClienteController {
 
         dados.put("listaClientes", listaClientes);
         dados.put("cliente", cliente);
-        dados.put("listaCachorros", listaCachorros);
+        dados.put("listaDisponiveis", listaCachorros);
         dados.put("novoCachorro", new Cachorro());
         return new ModelAndView("cliente/form", dados);
     }
 
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") long id) {
-        var umCliente = clienteService.findById(id);
+        VincClienteCachorroDTO umCliente = new VincClienteCachorroDTO();
+        umCliente = clienteService.findById(id);
         var listaCachorros = cachorroService.getAll();
         HashMap<String, Object> dados = new HashMap<>();
 
         dados.put("cliente", umCliente);
-        dados.put("listaCachorros", listaCachorros);
+        dados.put("listaDisponiveis", listaCachorros);
+        dados.put("novoCachorro", new Cachorro());
         return new ModelAndView("cliente/form", dados);
     }
 

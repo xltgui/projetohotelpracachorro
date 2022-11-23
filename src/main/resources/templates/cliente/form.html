@@ -40,8 +40,9 @@
                         <tbody>
                             <tr th:each="umCachorro, stat : *{listaCachorros}">
                                 <td th:text="${umCachorro.nomeCachorro}"></td>
-                                <input type="hidden"
-                                        th:field="*{listaCachorros[__${stat.index}__].nomeCachorro}">
+                                <input type="hidden" th:field="*{listaCachorros[__${stat.index}__].nomeCachorro}">
+                                <input type="hidden" th:field="*{listaCachorros[__${stat.index}__].id}">
+                                <input type="hidden" th:field="*{listaCachorros[__${stat.index}__].peso}">
 
 
                                 <td>
@@ -62,7 +63,7 @@
 
                     <div class="form-group">
                         <label for="cbcachorro">Cachorro</label>
-                        <select class="form-select" id="cbcachorro" th:field="*{novoCachorro}">
+                        <select class="form-select" id="cbcachorro" th:field="*{novoCachorro}">   
                             <option th:each="umCachorro : ${listaDisponiveis}" th:value="${umCachorro.id}"
                                 th:text="${umCachorro.nomeCachorro}">
                             </option>

@@ -9,7 +9,9 @@ public interface ClienteService {
     List<Cliente> getAll();
 
     Cliente save(VincClienteCachorroDTO cliente);
-    Cliente findById(long id);
+    VincClienteCachorroDTO findById(long id);
+
+    Cliente findClienteById(long id);
 
     void delete(long id);
 

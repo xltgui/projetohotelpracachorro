@@ -15,7 +15,7 @@ public class Funcionario {
 
     private String funcao;
     
-    private float avaliacao;
+    private int avaliacao;
 
     public long getId() {
         return id;
@@ -41,7 +41,7 @@ public class Funcionario {
         this.funcao = funcao;
     }
 
-    public float getAvaliacao() {
+    public int getAvaliacao() {
         return avaliacao;
     }
 
