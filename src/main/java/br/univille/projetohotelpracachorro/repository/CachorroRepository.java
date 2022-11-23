@@ -10,5 +10,5 @@ import br.univille.projetohotelpracachorro.entity.Cachorro;
 
 @Repository
 public interface CachorroRepository extends JpaRepository<Cachorro, Long> {
-    List<Cachorro> findByNomeIgnoreCaseContaining(@Param("nome") String nome);
+    List<Cachorro> findByNomeCachorroIgnoreCaseContaining(@Param("nomeCachorro") String nomeCachorro);
 }

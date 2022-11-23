@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
 
-</html>
-
 <head th:include="layout :: head"></head>
 
 <body>
@@ -10,27 +8,22 @@
     <main class="container">
         <form th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}">
 
-            <input type="hidden" th:field="${cliente.id}">
+            <input type="hidden" th:field="*{id}">
 
             <div class="form-group">
                 <label for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" th:field="${cliente.nome}">
-                <p th:if="${#fields.hasErrors('nome')}"
-                th:errors="${cliente.nome}"
-                class="alert alert-danger"></p>
+                <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
             </div>
-            
+
             <div class="form-group">
                 <label for="txtcpf">CPF</label>
-                <input type="text" class="form-control" id="txtcpf" th:field="${cliente.CPF}">
+                <input type="text" class="form-control" id="txtcpf" th:field="*{CPF}">
             </div>
 
             <div class="form-group">
                 <label for="txtfone">Telefone</label>
                 <input type="text" class="form-control" id="txtfone" th:field="${cliente.telefone}">
-                <p th:if="${#fields.hasErrors('telefone')}"
-                th:errors="${cliente.sexo}"
-                class="alert alert-danger"></p>
+                <p th:if="${#fields.hasErrors('telefone')}" th:errors="${cliente.sexo}" class="alert alert-danger"></p>
             </div>
 
             <div class="card">
@@ -45,9 +38,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="umCachorro, stat : ${cliente.listaCachorros}">
-                                <td th:text="${umCachorro.nome}"></td>
-                                <input type="hidden" th:field="${cliente.listaCachorros[__${stat.index}__].id}">
+                            <tr th:each="umCachorro, stat : *{listaCachorros}">
+                                <td th:text="${umCachorro.nomeCachorro}"></td>
+                                <input type="hidden"
+                                        th:field="*{listaCachorros[__${stat.index}__].nomeCachorro}">
+
 
                                 <td>
                                     <button class="btn btn-danger" type="submit" name="removecachorro"
@@ -67,10 +62,10 @@
 
                     <div class="form-group">
                         <label for="cbcachorro">Cachorro</label>
-                        <select class="form-select" id="cbcachorro" th:field="${novoCachorro}">
-                            <option th:each="umCachorroNovo : ${listaDisponiveis}" th:value="${umCachorroNovo.id}"
-                            th:text="${umCachorroNovo.nome}">
-                        </option>
+                        <select class="form-select" id="cbcachorro" th:field="*{novoCachorro}">
+                            <option th:each="umCachorro : ${listaDisponiveis}" th:value="${umCachorro.id}"
+                                th:text="${umCachorro.nomeCachorro}">
+                            </option>
                         </select>
                     </div>
 

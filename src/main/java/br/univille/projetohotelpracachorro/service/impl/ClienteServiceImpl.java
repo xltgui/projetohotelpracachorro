@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.univille.projetohotelpracachorro.dto.VincClienteCachorroDTO;
 import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.repository.ClienteRepository;
 import br.univille.projetohotelpracachorro.service.ClienteService;
@@ -22,8 +23,14 @@ public class ClienteServiceImpl implements ClienteService {
     }
     
     @Override
-    public Cliente save(Cliente cliente){
-        return repositorio.save(cliente);
+    public Cliente save(VincClienteCachorroDTO cliente){
+        Cliente novoCliente = new Cliente();
+        novoCliente.setCPF(cliente.getCPF());
+        novoCliente.setListaCachorros(cliente.getListaCachorros());
+        novoCliente.setNome(cliente.getNome());
+        novoCliente.setTelefone(cliente.getTelefone());
+        
+        return repositorio.save(novoCliente);
     }
 
     @Override

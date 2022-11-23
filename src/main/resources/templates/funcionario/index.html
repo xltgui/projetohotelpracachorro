@@ -20,14 +20,14 @@
         </thead>
 
         <tbody>
-            <tr th:each="umFuncionario : ${listaCachorros}">
+            <tr th:each="umFuncionario : ${listaFuncionarios}">
                 <td th:text="${umFuncionario.id}"></td>
                 <td th:text="${umFuncionario.nome}"></td>
                 <td th:text="${umFuncionario.funcao}"></td>
                 <td th:text="${umFuncionario.avaliacao}"></td>
                 <td>
-                    <a th:href="@{'/funcionarios/alterar/' + ${funcionario.id}}" class="btn btn-warning">Alterar</a>
-                <button class="btn btn-danger js-delete" th:data-id="${funcionario.id}">Excluir</button>
+                    <a th:href="@{'/funcionarios/alterar/' + ${umFuncionario.id}}" class="btn btn-warning">Alterar</a>
+                <button class="btn btn-danger js-delete" th:data-id="${umFuncionario.id}">Excluir</button>
                 </td>
             </tr>
         </tbody>
