@@ -14,6 +14,8 @@ public class VincClienteCachorroDTO {
     private List<Cachorro> listaCachorros = new ArrayList<>();
     private Cachorro novoCachorro;
     
+
+    
     public Cachorro getNovoCachorro() {
 		return novoCachorro;
 	}

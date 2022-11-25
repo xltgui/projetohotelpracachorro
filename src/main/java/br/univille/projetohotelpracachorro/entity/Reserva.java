@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,18 +35,34 @@ public class Reserva {
     @OneToOne(cascade = CascadeType.ALL)
     private Cachorro cachorro;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Cliente cliente;
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<Cliente> listaClientes;
            
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Servicos> listaServicos = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<Servico> listaServicos = new ArrayList<>();
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Funcionario atendente;
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<Funcionario> listaAtendentes;
 
-    public float totalReserva(){
-        return 0;
+
+
+
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> listaCliente) {
+        this.listaClientes = listaCliente;
+    }
+
+    public List<Funcionario> getListaAtendentes() {
+        return listaAtendentes;
+    }
+
+    public void setListaAtendentes(List<Funcionario> listaAtendentes) {
+        this.listaAtendentes = listaAtendentes;
     }
 
     public long getId() {
@@ -81,11 +98,11 @@ public class Reserva {
         this.cachorro = cachorro;
     }
 
-    public List<Servicos> getListaServicos() {
+    public List<Servico> getListaServicos() {
         return listaServicos;
     }
 
-    public void setListaServicos(List<Servicos> listaServicos) {
+    public void setListaServicos(List<Servico> listaServicos) {
         this.listaServicos = listaServicos;
     }
 

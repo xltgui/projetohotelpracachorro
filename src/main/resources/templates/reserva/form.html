@@ -8,7 +8,44 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        
+        <form th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label for="txtatendente">Atendente</label>
+                <select th:field="*{listaAtendentes}" class="form-select">
+                    <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
+                    th:text="${umAtendente.nome}">
+                </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="txtdata">Data</label>
+                <input type="date" class="form-control" id="txtdata" th:field="*{dataEntrada}">
+            </div>
+
+            <div class="form-group">
+                <label for="txtcliente">Cliente</label>
+                <select th:field="*{listaClientes}" class="form-select">
+                    <option th:each="umCliente : ${listaClientes}" th:value="${umCliente.id}"
+                        th:text="${umCliente.nome}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Serviços</label>
+                <select th:field="*{listaServicos}" class="form-select">
+                    <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
+                        th:text="${umServico.nome}">
+                    </option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+
+        </form>
     </main>
     <footer th:include="layout :: footer"></footer>
 </body>

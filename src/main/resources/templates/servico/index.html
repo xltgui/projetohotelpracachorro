@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+        <a href="/servicos/novo" class="btn btn-primary">Novo</a>
+        <table class="table" id="tabservicos">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="umServico : ${listaServicos}">
+                    <td th:text="${umServico.id}"></td>
+                    <td th:text="${umServico.nome}"></td>
+                    <td th:text="${umServico.valorServico}"></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </main>
+    <footer th:include="layout :: footer"></footer>
+</body>
+
+</html>
