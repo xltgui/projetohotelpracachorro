@@ -62,6 +62,7 @@ public class ReservaController {
 
     @PostMapping(params = "form")
     public ModelAndView save(ReservaDTO reserva){
+        System.out.println(reserva.getDataEntrada());
         reservaService.save(reserva);
         return new ModelAndView("redirect:/reservas");
     }

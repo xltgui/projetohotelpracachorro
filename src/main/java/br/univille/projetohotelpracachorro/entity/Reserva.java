@@ -21,29 +21,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MMM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataEntrada;
     
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MMM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataSaida;
     
     
-    @OneToOne(cascade = CascadeType.ALL)
-    private Cachorro cachorro;
+    @OneToMany(cascade = CascadeType.REFRESH)
+    private List<Cachorro> listaCachorros = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.REFRESH)
-    private List<Cliente> listaClientes;
+    private List<Cliente> listaClientes = new ArrayList<>();
            
     
     @OneToMany(cascade = CascadeType.REFRESH)
     private List<Servico> listaServicos = new ArrayList<>();
+
+
     
     @OneToMany(cascade = CascadeType.REFRESH)
-    private List<Funcionario> listaAtendentes;
+    private List<Funcionario> listaAtendentes = new ArrayList<>();
 
 
 
@@ -65,11 +67,11 @@ public class Reserva {
         this.listaAtendentes = listaAtendentes;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -90,20 +92,20 @@ public class Reserva {
     }
 
 
-    public Cachorro getCachorro() {
-        return cachorro;
-    }
-
-    public void setCachorro(Cachorro cachorro) {
-        this.cachorro = cachorro;
-    }
-
     public List<Servico> getListaServicos() {
         return listaServicos;
     }
 
     public void setListaServicos(List<Servico> listaServicos) {
         this.listaServicos = listaServicos;
+    }
+
+    public List<Cachorro> getListaCachorros() {
+        return listaCachorros;
+    }
+
+    public void setListaCachorros(List<Cachorro> listaCachorros) {
+        this.listaCachorros = listaCachorros;
     }
 
     

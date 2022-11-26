@@ -29,10 +29,10 @@ public class ReservaServiceImpl implements ReservaService {
             novaReserva = new Reserva();
         }
         novaReserva.setListaAtendentes(reserva.getListaAtendentes());
-        novaReserva.setCachorro(reserva.getCachorro());
+        novaReserva.setListaCachorros(reserva.getListaCachorros());
         novaReserva.setListaClientes(reserva.getListaClientes());
         novaReserva.setDataEntrada(reserva.getDataEntrada());
-        novaReserva.setId(reserva.getId());
+        novaReserva.setId(null);
         novaReserva.setListaServicos(reserva.getListaServicos());
 
         return repositorio.save(novaReserva);
@@ -45,7 +45,7 @@ public class ReservaServiceImpl implements ReservaService {
             var reservaAntiga = resultado.get();
             ReservaDTO reserva = new ReservaDTO();
             reserva.setListaAtendentes(reservaAntiga.getListaAtendentes());
-            reserva.setCachorro(reservaAntiga.getCachorro());
+            reserva.setListaCachorros(reservaAntiga.getListaCachorros());
             reserva.setListaClientes(reservaAntiga.getListaClientes());
             reserva.setDataEntrada(reservaAntiga.getDataEntrada());
             reserva.setId(reservaAntiga.getId());

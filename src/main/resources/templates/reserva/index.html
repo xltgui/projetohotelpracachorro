@@ -24,16 +24,31 @@
 
 
             <tbody th:each="umaReserva : ${listaReservas}">
-                    <td th:text="${umaReserva.id}"></td>
-                    <td th:text="${umaReserva.listaAtendentes?.nome}"></td>
-                    <td th:text="${umaReserva.dataEntrada}"></td>
-                    <td th:text="${umaReserva.cliente?.nome}">
-                        <ul th:each="umCachorro : ${umaReserva.listaCachorros}">
-                            <li th:text="${umCachorro.nomeCachorro}"></li>
-                        </ul>
-                    </td>
-                    <td th:text="${umaReserva.listaServicos?.nome}"></td>
-                    <td th:text="${#aggregates.sum(umaReserva.![getTotalReserva])}"></td>
+                <td th:text="${umaReserva.id}"></td>
+    
+                <td>
+                    <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
+                        <li th:text="${umAtendente.nome}"></li>
+                    </ul>
+                </td>
+                <td th:text="${umaReserva.dataEntrada}"></td>
+                <td>
+                    <ul th:each="umCliente : ${umaReserva.listaClientes}">
+                        <li th:text="${umCliente.nome}"></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul th:each="umServico : ${umaReserva.listaServicos}">
+                        <li th:text="${umServico?.nome}"></li>
+                    </ul>
+                </td>
+                
+                <td>
+                    <ul th:each="umServico : ${umaReserva.listaServicos}">
+                        <li th:text="${umServico?.nome}"></li>
+                    </ul>
+                </td>
+                <!--<td th:text="${#aggregates.sum(umaReserva.listaServicos![getTotalReserva])}"></td>-->
             </tbody>
 
         </table>

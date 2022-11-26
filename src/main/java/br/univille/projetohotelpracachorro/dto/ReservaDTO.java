@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import br.univille.projetohotelpracachorro.entity.Cachorro;
@@ -14,12 +17,13 @@ import br.univille.projetohotelpracachorro.entity.Servico;
 public class ReservaDTO {
     private long id;
     
-    @DateTimeFormat(pattern = "yyyy-MMM-dd")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataEntrada;
     
-    private Cachorro cachorro;
     private List<Cliente> listaClientes = new ArrayList<>();
     private List<Servico> listaServicos = new ArrayList<>();
+    private List<Cachorro> listaCachorros = new ArrayList<>();
     private List<Funcionario> listaAtendentes;
 
     public List<Funcionario> getListaAtendentes() {
@@ -56,13 +60,7 @@ public class ReservaDTO {
         this.dataEntrada = dataEntrada;
     }
 
-    public Cachorro getCachorro() {
-        return cachorro;
-    }
-
-    public void setCachorro(Cachorro cachorro) {
-        this.cachorro = cachorro;
-    }
+    
 
 
     public List<Servico> getListaServicos() {
@@ -80,5 +78,13 @@ public class ReservaDTO {
 
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
+    }
+
+    public List<Cachorro> getListaCachorros() {
+        return listaCachorros;
+    }
+
+    public void setListaCachorros(List<Cachorro> listaCachorros) {
+        this.listaCachorros = listaCachorros;
     }
 }
