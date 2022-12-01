@@ -8,7 +8,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <a href="/cachorros/novo" class="btn btn-primary">Novo</a>
+        <a href="/cachorros/novo" class="btn">Novo</a>
         <table class="table" id="tabcachorros">
             <thead>
                 <tr>
@@ -25,8 +25,8 @@
                     <td th:text="${umCachorro.nomeCachorro}"></td>
                     <td th:text="${umCachorro.peso}"></td>
                     <td>
-                        <a th:href="@{'/cachorros/alterar/' + ${umCachorro.id}}" class="btn btn-warning">Alterar</a>
-                    <button class="btn btn-danger js-delete" th:data-id="${umCachorro.id}">Excluir</button>
+                        <a th:href="@{'/cachorros/alterar/' + ${umCachorro.id}}" class="btn">Alterar</a>
+                    <button class="btn js-delete" th:data-id="${umCachorro.id}">Excluir</button>
                     </td>
                 </tr>
             </tbody>
@@ -44,15 +44,17 @@
               <p>Confirma a exclusão do funcionário?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCachorroNao">Não</button>
-              <button type="button" class="btn btn-primary" id="btnCachorroSim">Sim</button>
+              <button type="button" class="btn" data-bs-dismiss="modal" id="btnCachorroNao">Não</button>
+              <button type="button" class="btn" id="btnCachorroSim">Sim</button>
             </div>
           </div>
         </div>
       </div>
 
     <footer th:include="layout :: footer"></footer>
-    <script th:src="@{/scriptCachorros.js}"></script>
+    <div th:include="layout :: imports"></div>
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptCachorros.js}"></script>
 </body>
 
 </html>
