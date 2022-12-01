@@ -5,8 +5,11 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import br.univille.projetohotelpracachorro.entity.Cachorro;
+import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.entity.Funcionario;
 import br.univille.projetohotelpracachorro.entity.Servico;
+import br.univille.projetohotelpracachorro.repository.CachorroRepository;
 import br.univille.projetohotelpracachorro.repository.FuncionarioRepository;
 import br.univille.projetohotelpracachorro.repository.ServicoRepository;
 
@@ -18,6 +21,9 @@ public class Startup {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    private CachorroRepository cachorroRepository;
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event){
@@ -59,5 +65,19 @@ public class Startup {
                 funcionarioRepository.save(funcionario);
                 
             }
+            if(!cachorroRepository.findById(1l).isPresent()){
+                Cachorro cachorro = new Cachorro();
+
+                cachorro.setId(1l);
+                cachorro.setNomeCachorro("lilica");
+                cachorro.setPeso(2);
+
+                cachorroRepository.save(cachorro);
+                
+            }
+
+
+
+               
     }
 }

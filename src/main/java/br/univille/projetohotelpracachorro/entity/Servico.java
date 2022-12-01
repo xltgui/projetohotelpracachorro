@@ -1,5 +1,6 @@
 package br.univille.projetohotelpracachorro.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,22 +17,23 @@ public class Servico {
     private String nome;
     private float valorServico;
     
-    @ManyToOne
-    private Cachorro cachorro;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Reserva reserva;
 
-    public float getTotalReserva(float valorServico){
+    public float getTotalReserva(){   
         float valor = 0;
-        if(cachorro.getPeso() >= 2 && cachorro.getPeso() <= 15 ){
-            valor = 55;
+        if(reserva.getCachorro() != null){   
+            if(reserva.getCachorro().getPeso() >= 0 && reserva.getCachorro().getPeso() <= 15 ){
+                valor = 55;
+            }
+            if(reserva.getCachorro().getPeso() >= 16 && reserva.getCachorro().getPeso() <= 25 ){
+                valor = 65;
+            }
+            if(reserva.getCachorro().getPeso() >= 26){
+                valor = 75;
+            }
         }
-        if(cachorro.getPeso() >= 16 && cachorro.getPeso() <= 25 ){
-            valor = 65;
-        }
-        if(cachorro.getPeso() >= 26 && cachorro.getPeso() <= 60 ){
-            valor = 75;
-        }
-
-        return valor + valorServico;
+        return (this.getValorServico() + valor) * reserva.getDiasPermanecentes();
     }
     
     public long getId() {
@@ -57,12 +59,12 @@ public class Servico {
         this.valorServico = valorServico;
     }
 
-    public Cachorro getCachorro() {
-        return cachorro;
+    public Reserva getReserva() {
+        return reserva;
     }
 
-    public void setCachorro(Cachorro cachorro) {
-        this.cachorro = cachorro;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
     
 

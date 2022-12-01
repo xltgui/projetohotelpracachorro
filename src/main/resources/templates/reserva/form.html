@@ -15,14 +15,19 @@
                 <label for="txtatendente">Atendente</label>
                 <select th:field="*{listaAtendentes}" class="form-select">
                     <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
-                    th:text="${umAtendente.nome}">
-                </option>
+                        th:text="${umAtendente.nome}">
+                    </option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="txtdata">Data</label>
-                <input type="date" class="form-control" id="txtdata" th:field="*{dataEntrada}">
+                <label for="txtdataentrada">Data de Entrada</label>
+                <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}">
+            </div>
+
+            <div class="form-group">
+                <label for="txtdatasaida">Data de Saída</label>
+                <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}">
             </div>
 
             <div class="form-group">
@@ -35,15 +40,66 @@
             </div>
 
             <div class="form-group">
-                <label>Serviços</label>
-                <select th:field="*{listaServicos}" class="form-select">
-                    <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
-                        th:text="${umServico.nome}">
+                <label for="txtcachorro">Cachorros</label>
+                <select th:field="*{Cachorro}" class="form-select">
+                    <option th:each="umCachorro : ${listaCachorros}" th:value="${umCachorro.id}"
+                        th:text="${umCachorro.nomeCachorro}">
                     </option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-body">
+                        Serviços vinculados
+                    </h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="umServico, stat : *{listaServicos}">
+                                <td th:text="${umServico.nome}"></td>
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].nome}">
+                                <td th:text="${umServico.valorServico}"></td>
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].valorServico}">
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].id}">
+                                
+
+                                <td>
+                                    <button class="btn btn-danger" type="submit" name="removeservico"
+                                        th:value="__${stat.index}__">Remover</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Novo Serviço
+                    </h5>
+
+                    <div class="form-group">
+                        <label for="cbservico">Serviço</label>
+                        <select class="form-select" id="cbservico" th:field="*{novoServico}">
+                            <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
+                                th:text="${umServico.nome}">
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" name="vincservico" class="btn btn-info">Vincular Serviço</button>
+                </div>
+            </div>
+
+            <button type="submit" name="save" class="btn btn-primary">Enviar</button>
 
         </form>
     </main>

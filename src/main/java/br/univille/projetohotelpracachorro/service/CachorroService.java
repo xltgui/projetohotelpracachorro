@@ -10,7 +10,10 @@ public interface CachorroService {
     Cachorro save(Cachorro cachorro);
     Cachorro findById(long id);
 
+
     void delete(long id);
+
+    //List<Cachorro> findbyCachorroById(long id);
 
     List<Cachorro> findByNome(String nome);
 }

@@ -22,7 +22,7 @@ public class FuncionarioController {
 
     @GetMapping
     public ModelAndView index(){
-        var listaFuncionarios = funcionarioService.getAtll();
+        var listaFuncionarios = funcionarioService.getAll();
 
         return new ModelAndView("funcionario/index", "listaFuncionarios", listaFuncionarios);
         

@@ -15,7 +15,9 @@
                     <th>Id</th>
                     <th>Atendente</th>
                     <th>Data entrada</th>
+                    <th>Data saída</th>
                     <th>Cliente</th>
+                    <th>Cachorros</th>
                     <th>Serviços</th>
                     <th>Total</th>
                     <th></th>
@@ -25,35 +27,65 @@
 
             <tbody th:each="umaReserva : ${listaReservas}">
                 <td th:text="${umaReserva.id}"></td>
-    
+
                 <td>
                     <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
                         <li th:text="${umAtendente.nome}"></li>
                     </ul>
                 </td>
+
                 <td th:text="${umaReserva.dataEntrada}"></td>
+
+                <td th:text="${umaReserva.dataSaida}"></td>
+
                 <td>
                     <ul th:each="umCliente : ${umaReserva.listaClientes}">
                         <li th:text="${umCliente.nome}"></li>
                     </ul>
                 </td>
+
+                <td>
+                    <ul th:each="umCachorro : ${umaReserva.Cachorro}">
+                        <li th:text="${umCachorro.nomeCachorro}"></li>
+                    </ul>
+                </td>
+
                 <td>
                     <ul th:each="umServico : ${umaReserva.listaServicos}">
                         <li th:text="${umServico?.nome}"></li>
                     </ul>
                 </td>
                 
+
+                <td th:text="${#aggregates.sum(umaReserva.listaServicos.![getTotalReserva])}"></td>
                 <td>
-                    <ul th:each="umServico : ${umaReserva.listaServicos}">
-                        <li th:text="${umServico?.nome}"></li>
-                    </ul>
+                    <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn btn-warning">Alterar</a>
+                    <button class="btn btn-danger js-delete" th:data-id="${umaReserva.id}">Excluir</button>
                 </td>
-                <!--<td th:text="${#aggregates.sum(umaReserva.listaServicos![getTotalReserva])}"></td>-->
             </tbody>
 
         </table>
     </main>
+
+    <div class="modal" tabindex="-1" id="modalreserva">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Excluir reserva</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Confirma a exclusão da reserva?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
+              <button type="button" class="btn btn-primary" id="btnReservaSim">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <footer th:include="layout :: footer"></footer>
+    <script th:src="@{/scriptReservas.js}"></script>
 </body>
 
 </html>

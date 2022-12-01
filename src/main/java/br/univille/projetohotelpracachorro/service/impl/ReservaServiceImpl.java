@@ -2,6 +2,7 @@ package br.univille.projetohotelpracachorro.service.impl;
 
 import java.util.List;
 
+import org.hibernate.event.internal.ReattachVisitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.stereotype.Service;
@@ -29,12 +30,17 @@ public class ReservaServiceImpl implements ReservaService {
             novaReserva = new Reserva();
         }
         novaReserva.setListaAtendentes(reserva.getListaAtendentes());
-        novaReserva.setListaCachorros(reserva.getListaCachorros());
+        novaReserva.setCachorro(reserva.getCachorro());
         novaReserva.setListaClientes(reserva.getListaClientes());
         novaReserva.setDataEntrada(reserva.getDataEntrada());
-        novaReserva.setId(null);
-        novaReserva.setListaServicos(reserva.getListaServicos());
-
+        novaReserva.setDataSaida(reserva.getDataSaida());
+        novaReserva.setId(reserva.getId());
+        //novaReserva.setListaServicos(reserva.getListaServicos());
+        for(var umServico : reserva.getListaServicos()){
+            novaReserva.addServico(umServico);
+        }
+        //novaReserva.setListaCachorros(reserva.getListaCachorros());
+        
         return repositorio.save(novaReserva);
     }
 
@@ -45,11 +51,14 @@ public class ReservaServiceImpl implements ReservaService {
             var reservaAntiga = resultado.get();
             ReservaDTO reserva = new ReservaDTO();
             reserva.setListaAtendentes(reservaAntiga.getListaAtendentes());
-            reserva.setListaCachorros(reservaAntiga.getListaCachorros());
+            //reserva.setListaCachorros(reservaAntiga.getListaCachorros());
+            reserva.setCachorro(reservaAntiga.getCachorro());
             reserva.setListaClientes(reservaAntiga.getListaClientes());
             reserva.setDataEntrada(reservaAntiga.getDataEntrada());
+            reserva.setDataSaida(reservaAntiga.getDataSaida());
             reserva.setId(reservaAntiga.getId());
             reserva.setListaServicos(reservaAntiga.getListaServicos());
+            
             return reserva;
         }    
         return new ReservaDTO();

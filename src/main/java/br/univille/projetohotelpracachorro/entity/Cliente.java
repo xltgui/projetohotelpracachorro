@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,7 +26,7 @@ public class Cliente {
     
 
    
-    @OneToMany(cascade = CascadeType.REFRESH)
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "cliente_id")
     private List<Cachorro> listaCachorros = new ArrayList<>(); 
     

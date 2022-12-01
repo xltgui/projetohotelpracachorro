@@ -44,5 +44,10 @@ public class CachorroServiceImpl implements CachorroService {
         return repositorio.findByNomeCachorroIgnoreCaseContaining(nome);
     }
 
+    /*@Override
+    public List<Cachorro> findbyCachorroById(long id) {
+        return repositorio.findByCachorroById(id);
+    }*/
+
     
 }

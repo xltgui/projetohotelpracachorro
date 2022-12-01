@@ -5,7 +5,7 @@ import java.util.List;
 import br.univille.projetohotelpracachorro.entity.Funcionario;
 
 public interface FuncionarioService {
-    List<Funcionario> getAtll();
+    List<Funcionario> getAll();
 
     Funcionario save(Funcionario funcionario);
 

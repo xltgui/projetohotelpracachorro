@@ -1,20 +1,19 @@
 package br.univille.projetohotelpracachorro.entity;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -22,34 +21,47 @@ public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataEntrada;
-    
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataSaida;
-    
-    
-    @OneToMany(cascade = CascadeType.REFRESH)
-    private List<Cachorro> listaCachorros = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.REFRESH)
-    private List<Cliente> listaClientes = new ArrayList<>();
-           
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataEntrada;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dataSaida;
+
+    // long diasPermanecentes = ChronoUnit.DAYS.between(this.getDataEntrada(),
+    // this.getDataSaida());
+
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Cachorro cachorro = new Cachorro();
     
-    @OneToMany(cascade = CascadeType.REFRESH)
+    /*@ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "listaCachorros_reservas")
+    private List<Cachorro> listaCachorros = new ArrayList<>();*/ 
+
+    @ManyToMany
+    @JoinColumn(name = "listaClientes_reservas")
+    private List<Cliente> listaClientes = new ArrayList<>();
+
+    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "listaServicos_reservas")
     private List<Servico> listaServicos = new ArrayList<>();
 
-
-    
-    @OneToMany(cascade = CascadeType.REFRESH)
+    @ManyToMany
+    @JoinColumn(name = "funcionarios_reservas")
     private List<Funcionario> listaAtendentes = new ArrayList<>();
 
+    public long getDiasPermanecentes() {
+        long diasPermanecentes = ChronoUnit.DAYS.between(this.getDataEntrada(), this.getDataSaida());
+        return diasPermanecentes;
+    }
 
+    public Cachorro getCachorro() {
+        return cachorro;
+    }
 
-
+    public void setCachorro(Cachorro cachorro) {
+        this.cachorro = cachorro;
+    }
 
     public List<Cliente> getListaClientes() {
         return listaClientes;
@@ -61,6 +73,11 @@ public class Reserva {
 
     public List<Funcionario> getListaAtendentes() {
         return listaAtendentes;
+    }
+
+    public void addServico(Servico servico) {
+        this.listaServicos.add(servico);
+        servico.setReserva(this);
     }
 
     public void setListaAtendentes(List<Funcionario> listaAtendentes) {
@@ -75,22 +92,21 @@ public class Reserva {
         this.id = id;
     }
 
-    public Date getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
+    public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 
-    public Date getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(Date dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
-
 
     public List<Servico> getListaServicos() {
         return listaServicos;
@@ -100,13 +116,12 @@ public class Reserva {
         this.listaServicos = listaServicos;
     }
 
-    public List<Cachorro> getListaCachorros() {
+    /*public List<Cachorro> getListaCachorros() {
         return listaCachorros;
     }
 
     public void setListaCachorros(List<Cachorro> listaCachorros) {
         this.listaCachorros = listaCachorros;
-    }
+    }*/
 
-    
 }

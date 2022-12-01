@@ -59,11 +59,11 @@ public class ClienteController {
         cliente.getListaCachorros().add(cliente.getNovoCachorro());
         cliente.setNovoCachorro(null);
  
-        var listaClientes = clienteService.getAll();
+        //var listaClientes = clienteService.getAll();
         var listaCachorros = cachorroService.getAll();
         HashMap<String, Object> dados = new HashMap<>();
 
-        dados.put("listaClientes", listaClientes);
+        //dados.put("listaClientes", listaClientes);
         dados.put("cliente", cliente);
         dados.put("listaDisponiveis", listaCachorros);
         dados.put("novoCachorro", new Cachorro());
