@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
+
 import br.univille.projetohotelpracachorro.dto.VincClienteCachorroDTO;
 import br.univille.projetohotelpracachorro.entity.Cachorro;
 import br.univille.projetohotelpracachorro.entity.Cliente;
@@ -52,6 +54,12 @@ public class ClienteController {
         
         clienteService.save(cliente);
         return new ModelAndView("redirect:/clientes");
+    }
+
+    @PostMapping(params = "agendarReserva")
+    public ModelAndView agendarReserva(VincClienteCachorroDTO cliente){
+        clienteService.save(cliente);
+        return new ModelAndView("redirect:/reservas/novo");
     }
 
     @PostMapping(params = "vincdog")

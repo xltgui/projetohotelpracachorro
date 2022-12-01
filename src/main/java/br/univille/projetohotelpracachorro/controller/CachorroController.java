@@ -34,10 +34,18 @@ public class CachorroController {
 
     }
 
-    @PostMapping(params = "form")
+    /*@PostMapping(params = "form")
     public ModelAndView save(Cachorro cachorro){
         cachorroService.save(cachorro);
         return new ModelAndView("redirect:/cachorros");
+    }*/
+
+    
+
+    @PostMapping(params = "continuar")
+    public ModelAndView continuar(Cachorro cachorro){
+        cachorroService.save(cachorro);
+        return new ModelAndView("redirect:/clientes/novo");
     }
     
     @GetMapping("/alterar/{id}")
