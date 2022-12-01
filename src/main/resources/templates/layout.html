@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Bom pra Cachorro</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
-    <title>Document</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
+
 <body>
-  <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Hotel bom para cachorro</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
-        </li>
+    <header th:fragment="menu" class="d-flex flex-wrap justify-content-between py-3 mb-4 container gap-4">
+        <ul class="d-flex w-100 gap-4 flex-wrap">
+            <li class="">
+              <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/clientes">Clientes</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/cachorros">Cachorros</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/funcionarios">Funcionarios</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/reservas">Reservas</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/servicos">Serviços</a>
+            </li>
+            
+            <li class="">
+              <a class="nav-link" href="/bancodedados">Database</a>
+            </li>
+          </ul>
+          
+        <a href="/home" class="d-flex align-items-center text-decoration-none ">
+            <img class="d-block mx-auto" th:src="@{/img/logo-BPC.svg}" alt="" width="40">
+        </a>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/home" class="nav-link" aria-current="page">home</a></li>
+                <li class="nav-item"><a href="/home#reserva" class="nav-link">reserva online</a></li>
+                <li class="nav-item"><a href="/home#adicionais" class="nav-link">serviços adicionais</a></li>
+                <li class="nav-item"><a href="/home#avaliacoes" class="nav-link">equipe</a></li>
+                <li class="nav-item"><a href="/home#contato" class="nav-link">contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/clientes">Clientes</a>
-        </li>
+    <footer th:fragment="footer">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 container gap-4">
+            <span>Copyright &copy; 2022 Bom Pra Cachorro. Todos os direitos reservados.</span>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/cachorros">Cachorros</a>
-        </li>
+            <a href="/home" class="text-decoration-none">
+                <img class="d-block mx-auto" th:src="@{/img/logo-BPC.svg}" alt="" width="40">
+            </a>
+        </div>
+    </footer>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/funcionarios">Funcionarios</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/reservas">Reservas</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/servicos">Serviços</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" href="/bancodedados">Database</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-      <footer th:fragment="footer">
+    <div th:fragment="imports">
         <script th:src="@{/webjars/jquery/3.6.1/dist/jquery.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
-      </footer>
+    </div>
 </body>
+
 </html>

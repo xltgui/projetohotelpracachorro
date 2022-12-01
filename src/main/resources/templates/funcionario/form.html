@@ -28,11 +28,12 @@
                 <label for="txtavaliacao">Avaliação</label>
                 <input type="number" class="form-control" id="txtavaliacao" autocomplete="off" th:field="*{avaliacao}" min="1" max="5"/> 
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn">Enviar</button>
             
         </form>
     </main>
     <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
 </body>
 
 </html>
