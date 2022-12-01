@@ -17,16 +17,32 @@
 
             <div class="form-group">
                 <label for="txtcpf">CPF</label>
-                <input type="text" class="form-control" id="txtcpf" th:field="*{CPF}">
+                <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00" id="txtcpf" th:field="*{CPF}">
             </div>
 
             <div class="form-group">
                 <label for="txtfone">Telefone</label>
-                <input type="text" class="form-control" id="txtfone" th:field="${cliente.telefone}">
-                <p th:if="${#fields.hasErrors('telefone')}" th:errors="${cliente.sexo}" class="alert alert-danger"></p>
+                <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="*{telefone}">
+                
             </div>
 
-            <div class="card">
+            <!--<table class="table">
+                <thead>
+                    <tr>
+                        <th>Cachorros</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="umCachorro : ${listaCachorros}">
+                        <td>
+                            <input type="checkbox" th:field="*{listaDisponiveis}" th:value="${umCachorro.id}">
+                            <label th:text="${umCachorro.nomeCachorro}"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>-->
+            <!--<div class="card">
                 <div class="card-body">
                     <h5 class="card-body">
                         Cachorros vinculados
@@ -72,10 +88,11 @@
 
                     <button type="submit" name="vincdog" class="btn btn-primary">Vincular cachorro</button>
                 </div>
-            </div>
+            </div>-->
 
             <!--<button type="submit" name=save class="btn btn-primary">Enviar</button>-->
-            <button type="submit" href="http://localhost:8080/reservas/novo" name=agendarReserva class="btn btn-success">Agendar reserva</button>
+            <button type="submit" href="http://localhost:8080/reservas/novo" name=agendarReserva
+                class="btn btn-success">Agendar reserva</button>
 
         </form>
     </main>

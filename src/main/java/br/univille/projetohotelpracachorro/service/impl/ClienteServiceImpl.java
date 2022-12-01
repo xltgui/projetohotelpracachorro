@@ -33,6 +33,7 @@ public class ClienteServiceImpl implements ClienteService {
         novoCliente.getListaCachorros().addAll(cliente.getListaCachorros());
         novoCliente.setNome(cliente.getNome());
         novoCliente.setTelefone(cliente.getTelefone());
+        novoCliente.getListaCachorros().clear();
         
         return repositorio.save(novoCliente);
     }
