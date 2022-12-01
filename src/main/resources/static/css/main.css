@@ -1,0 +1,29 @@
+@import url(./home.css);
+@import url(./layout.css);
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+ul,
+li {
+    list-style: none;
+    padding-left: 0;
+}
+
+h1 {
+    font-size: calc(1.375rem + 0.9vw);
+}
+
+a {
+    color: inherit;
+}
+
+.nav,
+.btn,
+h4,
+h3,
+h2,
+h1 {
+    font-family: "Poppins", sans-serif;
+}

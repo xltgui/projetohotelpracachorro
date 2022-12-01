@@ -41,5 +41,10 @@ public class ServicoServiceImpl implements ServicoService{
     public List<Servico> findByNome(String nome) {
         return repositorio.findByNomeIgnoreCaseContaining(nome);
     }
+
+    @Override
+    public void delete(long id) {
+        repositorio.deleteById(id);
+    }
     
 }

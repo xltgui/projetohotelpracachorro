@@ -3,6 +3,8 @@ package br.univille.projetohotelpracachorro.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,5 +29,24 @@ public class ServicoController {
     public ModelAndView novo(){
         var novoServico = new Servico();
         return new ModelAndView("servico/form", "servico", novoServico);
+    }
+
+    @PostMapping(params = "form")
+    public ModelAndView save(Servico servico){
+        servicoService.save(servico);
+        return new ModelAndView("redirect:/servicos");
+    }
+
+    @GetMapping("alterar/{id}")
+        public ModelAndView alterar(@PathVariable("id") long id){
+            var umServico = servicoService.findById(id);
+
+            return new ModelAndView("servico/form", "servico", umServico);
+        }
+
+    @GetMapping("delete/{id}")
+    public ModelAndView delete(@PathVariable("id") long id){
+        servicoService.delete(id);
+        return new ModelAndView("redirect:/funcionarios");
     }
 }

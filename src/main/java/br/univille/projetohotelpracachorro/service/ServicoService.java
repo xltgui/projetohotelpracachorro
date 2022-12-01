@@ -13,5 +13,6 @@ public interface ServicoService {
     Servico findById(long id);
     
     List<Servico> findByNome(String nome);
-
+    
+    void delete (long id);
 }

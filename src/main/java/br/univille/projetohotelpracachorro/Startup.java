@@ -36,7 +36,7 @@ public class Startup {
                 servicoRepository.save(servico);
             }
 
-            if(!servicoRepository.findById(2l).isPresent()){
+            /*if(!servicoRepository.findById(2l).isPresent()){
                 Servico servico = new Servico();
                 servico.setId(2l);
                 servico.setNome("Banho e tosa");
@@ -74,7 +74,7 @@ public class Startup {
 
                 cachorroRepository.save(cachorro);
                 
-            }
+            }*/
 
 
 
