@@ -17,7 +17,7 @@
                     <th>Data entrada</th>
                     <th>Data saída</th>
                     <th>Cliente</th>
-                    <th>Cachorros</th>
+                    <th>Cachorro</th>
                     <th>Serviços</th>
                     <th>Total</th>
                     <th></th>
@@ -57,7 +57,7 @@
                 </td>
                 
 
-                <td th:text="${#aggregates.sum(umaReserva.listaServicos.![getTotalReserva])}"></td>
+                <td th:text="${umaReserva.getTotalReserva}"></td>
                 <td>
                     <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn btn-warning">Alterar</a>
                     <button class="btn btn-danger js-delete" th:data-id="${umaReserva.id}">Excluir</button>

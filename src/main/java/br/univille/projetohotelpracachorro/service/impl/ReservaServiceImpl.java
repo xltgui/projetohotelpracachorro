@@ -36,6 +36,7 @@ public class ReservaServiceImpl implements ReservaService {
         novaReserva.setDataSaida(reserva.getDataSaida());
         novaReserva.setId(reserva.getId());
         //novaReserva.setListaServicos(reserva.getListaServicos());
+        novaReserva.getListaServicos().clear();
         for(var umServico : reserva.getListaServicos()){
             novaReserva.addServico(umServico);
         }

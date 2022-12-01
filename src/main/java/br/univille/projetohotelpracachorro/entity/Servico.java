@@ -17,24 +17,7 @@ public class Servico {
     private String nome;
     private float valorServico;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Reserva reserva;
-
-    public float getTotalReserva(){   
-        float valor = 0;
-        if(reserva.getCachorro() != null){   
-            if(reserva.getCachorro().getPeso() >= 0 && reserva.getCachorro().getPeso() <= 15 ){
-                valor = 55;
-            }
-            if(reserva.getCachorro().getPeso() >= 16 && reserva.getCachorro().getPeso() <= 25 ){
-                valor = 65;
-            }
-            if(reserva.getCachorro().getPeso() >= 26){
-                valor = 75;
-            }
-        }
-        return (this.getValorServico() + valor) * reserva.getDiasPermanecentes();
-    }
+    
     
     public long getId() {
         return id;
@@ -58,14 +41,5 @@ public class Servico {
     public void setValorServico(float valorServico) {
         this.valorServico = valorServico;
     }
-
-    public Reserva getReserva() {
-        return reserva;
-    }
-
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
-    }
-    
 
 }

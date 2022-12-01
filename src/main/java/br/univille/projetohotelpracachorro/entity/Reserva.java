@@ -38,7 +38,7 @@ public class Reserva {
     @JoinColumn(name = "listaCachorros_reservas")
     private List<Cachorro> listaCachorros = new ArrayList<>();*/ 
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "listaClientes_reservas")
     private List<Cliente> listaClientes = new ArrayList<>();
 
@@ -77,7 +77,26 @@ public class Reserva {
 
     public void addServico(Servico servico) {
         this.listaServicos.add(servico);
-        servico.setReserva(this);
+    }
+
+    public float getTotalReserva(){   
+        float valor = 0;
+        if(getCachorro() != null){   
+            if(getCachorro().getPeso() >= 0 && getCachorro().getPeso() <= 15 ){
+                valor = 55;
+            }
+            if(getCachorro().getPeso() >= 16 && getCachorro().getPeso() <= 25 ){
+                valor = 65;
+            }
+            if(getCachorro().getPeso() >= 26){
+                valor = 75;
+            }
+        }
+        var totalServ = 0;
+        for(var umServ:listaServicos){
+            totalServ += umServ.getValorServico();
+        }
+        return (totalServ + valor) * getDiasPermanecentes();
     }
 
     public void setListaAtendentes(List<Funcionario> listaAtendentes) {

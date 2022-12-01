@@ -49,7 +49,7 @@
             </div>
 
 
-            <div class="card">
+            <!--<div class="card">
                 <div class="card-body">
                     <h5 class="card-body">
                         Serviços vinculados
@@ -68,8 +68,8 @@
                                 <input type="hidden" th:field="*{listaServicos[__${stat.index}__].nome}">
                                 <td th:text="${umServico.valorServico}"></td>
                                 <input type="hidden" th:field="*{listaServicos[__${stat.index}__].valorServico}">
-                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].id}"> 
-                                
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].id}">
+
 
                                 <td>
                                     <button class="btn btn-danger" type="submit" name="removeservico"
@@ -79,15 +79,35 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div>-->
+            
+            
+            <!--<div class="card">
+                <div class="card-body">-->
+                        <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serviços adicionais</th>
+                                <th>Preço</th>
+                            </tr>
+                        </thead>
 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Novo Serviço
-                    </h5>
+                    <tbody>
+                        <tr th:each="umServico : ${listaServicos}">
+                                <td>
+                                    <input type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
+                                    <label th:text="${umServico.nome}"></label>
+                                </td>
 
-                    <div class="form-group">
+                                <td>
+                                    <label th:text="${umServico.valorServico}"></label>
+                                </td>
+                </tr>
+                </tbody>
+            </table>
+                
+
+                    <!--<div class="form-group">
                         <label for="cbservico">Serviço</label>
                         <select class="form-select" id="cbservico" th:field="*{novoServico}">
                             <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
@@ -95,13 +115,15 @@
                             </option>
                         </select>
                     </div>
-                    <button type="submit" name="vincservico" class="btn btn-info">Vincular Serviço</button>
-                </div>
-            </div>
+                    <button type="submit" name="vincservico" class="btn btn-info">Vincular Serviço</button>-->
+                <!--</div>
+            </div>-->
+        
 
+            
             <button type="submit" name="save" class="btn btn-success">Concluir</button>
-
         </form>
+        
     </main>
     <footer th:include="layout :: footer"></footer>
 </body>
