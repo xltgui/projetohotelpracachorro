@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+        <form th:action="@{/servicos/(form)}" method="POST" th:object="${servico}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label for="txtnome">Nome</label>
+                <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
+            </div>
+
+            <div class="form-group">
+                <label for="txtvalor">Valor</label>
+                <input type="number" id="txtvalor" th:field="*{valorServico}">
+            </div>
+            <button type="submit" class="btn">enviar</button>
+        </form>
+    </main>
+    <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
+</body>
+
+</html>

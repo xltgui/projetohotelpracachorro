@@ -4,6 +4,10 @@ header .nav-link {
     color: #070707;
 }
 
+header .nav-link:hover {
+    color: #f39501;
+}
+
 header .nav-item:nth-child(2) {
     color: #f39501;
 }

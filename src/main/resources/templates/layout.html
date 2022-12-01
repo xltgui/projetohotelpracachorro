@@ -8,17 +8,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Bom pra Cachorro</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}">
     <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
 
 <body>
     <header th:fragment="menu" class="d-flex flex-wrap justify-content-between py-3 mb-4 container gap-4">
+        <ul class="d-flex w-100 gap-4 flex-wrap">
+            <li class="">
+              <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/clientes">Clientes</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/cachorros">Cachorros</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/funcionarios">Funcionarios</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/reservas">Reservas</a>
+            </li>
+    
+            <li class="">
+              <a class="nav-link" href="/servicos">Serviços</a>
+            </li>
+            
+            <li class="">
+              <a class="nav-link" href="/bancodedados">Database</a>
+            </li>
+          </ul>
+          
         <a href="/home" class="d-flex align-items-center text-decoration-none ">
             <img class="d-block mx-auto" th:src="@{/img/logo-BPC.svg}" alt="" width="40">
         </a>
-
         <nav>
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/home" class="nav-link" aria-current="page">home</a></li>

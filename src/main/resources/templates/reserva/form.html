@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+<style>
+    .input-container input {
+    border: none;
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+    width: 100%;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+</style>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <main class="container">
+        <form th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtatendente">Atendente</label>
+                <select th:field="*{listaAtendentes}" class="form-select">
+                    <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
+                        th:text="${umAtendente.nome}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtdataentrada">Data de Entrada</label>
+                <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtdatasaida">Data de Saída</label>
+                <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}">
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtcliente">Cliente</label>
+                <select th:field="*{listaClientes}" class="form-select">
+                    <option th:each="umCliente : ${listaClientes}" th:value="${umCliente.id}"
+                        th:text="${umCliente.nome}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtcachorro">Cachorros</label>
+                <select th:field="*{Cachorro}" class="form-select">
+                    <option th:each="umCachorro : ${listaCachorros}" th:value="${umCachorro.id}"
+                        th:text="${umCachorro.nomeCachorro}">
+                    </option>
+                </select>
+            </div>
+
+
+            <!--<div class="card">
+                <div class="card-body">
+                    <h5 class="card-body">
+                        Serviços vinculados
+                    </h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="umServico, stat : *{listaServicos}">
+                                <td th:text="${umServico.nome}"></td>
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].nome}">
+                                <td th:text="${umServico.valorServico}"></td>
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].valorServico}">
+                                <input type="hidden" th:field="*{listaServicos[__${stat.index}__].id}">
+
+
+                                <td>
+                                    <button class="btn" type="submit" name="removeservico"
+                                        th:value="__${stat.index}__">Remover</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+            
+            
+            <!--<div class="card">
+                <div class="card-body">-->
+                        <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serviços adicionais</th>
+                                <th>Preço</th>
+                            </tr>
+                        </thead>
+
+                    <tbody>
+                        <tr th:each="umServico : ${listaServicos}">
+                                <td>
+                                    <input type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
+                                    <label th:text="${umServico.nome}"></label>
+                                </td>
+
+                                <td>
+                                    <label th:text="${umServico.valorServico}"></label>
+                                </td>
+                </tr>
+                </tbody>
+            </table>
+                
+
+                    <!--<div class="form-group">
+                        <label for="cbservico">Serviço</label>
+                        <select class="form-select" id="cbservico" th:field="*{novoServico}">
+                            <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
+                                th:text="${umServico.nome}">
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" name="vincservico" class="btn">Vincular Serviço</button>-->
+                <!--</div>
+            </div>-->
+        
+
+            <div class="d-flex justify-content-end mt-2">
+                <button type="submit" name="save" class="btn">concluir</button>
+            </div>
+        </form>
+        
+    </main>
+    <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
+</body>
+
+</html>
