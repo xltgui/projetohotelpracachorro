@@ -16,7 +16,6 @@
                     <th>Nome</th>
                     <th>Cpf</th>
                     <th>Telefone</th>
-                    <th>Cachorros</th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,11 +26,11 @@
                     <td th:text="${cliente.nome}"></td>
                     <td th:text="${cliente.CPF}"></td>
                     <td th:text="${cliente.telefone}"></td>
-                    <td>
+                    <!--<td>
                       <ul th:each="umcachorro : ${cliente.listaCachorros}">
                         <li th:text="${umcachorro.nomeCachorro}"></li>
                       </ul>
-                    </td>
+                    </td>-->
                     <td>
                         <a th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn">Alterar</a>
                 <button class="btn js-delete" th:data-id="${cliente.id}">Excluir</button>

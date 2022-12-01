@@ -36,7 +36,23 @@
                 </div>
             </div>
 
-            <div class="card">
+            <!--<table class="table">
+                <thead>
+                    <tr>
+                        <th>Cachorros</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="umCachorro : ${listaCachorros}">
+                        <td>
+                            <input type="checkbox" th:field="*{listaDisponiveis}" th:value="${umCachorro.id}">
+                            <label th:text="${umCachorro.nomeCachorro}"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>-->
+            <!--<div class="card">
                 <div class="card-body">
                     <h5 class="card-body">
                         Cachorros vinculados
@@ -83,13 +99,12 @@
                         <button type="submit" name="vincdog" class="btn mt-2">vincular cachorro</button>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!--<button type="submit" name=save class="btn">Enviar</button>-->
             <div class="d-flex justify-content-end mt-2">
                 <button type="submit" href="http://localhost:8080/reservas/novo" name=agendarReserva class="btn">agendar reserva</button>
             </div>
-
         </form>
     </main>
     <footer th:include="layout :: footer"></footer>
