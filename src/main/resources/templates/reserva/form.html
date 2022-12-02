@@ -4,57 +4,31 @@
 </html>
 
 <head th:include="layout :: head"></head>
-<style>
-     input[type="date"] {
-        position: relative;
-    }
- 
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: auto;
-        height: auto;
-        color: transparent;
-        background: transparent;
-    }
-
-    /* adjust increase/decrease button */
-    input[type="date"]::-webkit-inner-spin-button {
-        z-index: 1;
-    }
-
-    /* adjust clear button */
-    input[type="date"]::-webkit-clear-button {
-        z-index: 1;
-    }
-</style>
 
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
+        <div class="progresso d-flex gap-5 justify-content-center mb-4">
+            <span class="progresso-1 text-bg-warning">1</span>
+            <span class="progresso-2 text-bg-warning">2</span>
+            <span class="progresso-3 text-bg-warning">3</span>
+        </div>
+        <h4 class="mb-4">Por fim, escolha os dados da reserva:</h4>
+
         <form th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}">
             <input type="hidden" th:field="*{id}">
 
-            <div class="form-group mb-3">
-                <label class="fw-semibold" for="txtatendente">Atendente</label>
-                <select th:field="*{listaAtendentes}" class="form-select">
-                    <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
-                        th:text="${umAtendente.nome}">
-                    </option>
-                </select>
-            </div>
+            
 
-            <div class="form-group mb-3">
-                <label class="fw-semibold" for="txtdataentrada">Data de Entrada</label>
-                <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}">
-            </div>
-
-            <div class="form-group mb-3">
-                <label class="fw-semibold" for="txtdatasaida">Data de Saída</label>
-                <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}">
+            <div class="form-group row mb-3">
+                <div class="col-6">
+                    <label class="fw-semibold" for="txtdataentrada">Data de Entrada</label>
+                    <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}">    
+                </div>
+                <div class="col-6">
+                    <label class="fw-semibold" for="txtdatasaida">Data de Saída</label>
+                    <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}">
+                </div>
             </div>
 
             <div class="form-group mb-3">
@@ -71,6 +45,15 @@
                 <select th:field="*{Cachorro}" class="form-select">
                     <option th:each="umCachorro : ${listaCachorros}" th:value="${umCachorro.id}"
                         th:text="${umCachorro.nomeCachorro}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group mb-4">
+                <label class="fw-semibold" for="txtatendente">Por quem você quer ser atendido?</label>
+                <select th:field="*{listaAtendentes}" class="form-select">
+                    <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
+                        th:text="${umAtendente.nome}">
                     </option>
                 </select>
             </div>
@@ -111,25 +94,19 @@
             
             <!--<div class="card">
                 <div class="card-body">-->
-                        <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Serviços adicionais</th>
-                                <th>Preço</th>
-                            </tr>
-                        </thead>
+                    <h5 class="fs-5 fw-semibold" style="font-family: Poppins;">Serviços adicionais disponíveis:</h5>
+            <table class="table">
+                <tbody>
+                    <tr th:each="umServico : ${listaServicos}">
+                        <td class="d-flex align-items-center">
+                            <input class="me-1" type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
+                            <label th:text="${umServico.nome}"></label>
+                        </td>
 
-                    <tbody>
-                        <tr th:each="umServico : ${listaServicos}">
-                                <td>
-                                    <input type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
-                                    <label th:text="${umServico.nome}"></label>
-                                </td>
-
-                                <td>
-                                    <label th:text="${umServico.valorServico}"></label>
-                                </td>
-                </tr>
+                        <td>
+                            <label class="servicos-valor" th:text="${umServico.valorServico}"></label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
                 

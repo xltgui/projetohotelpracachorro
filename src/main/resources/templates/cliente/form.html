@@ -21,17 +21,17 @@
 
             <div class="form-group mb-3">
                 <label class="fw-semibold" for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" placeholder="Digite seu nome" th:field="*{nome}">
+                <input type="text" class="form-control" id="txtnome" placeholder="Digite seu nome" th:field="*{nome}" required>
             </div>
 
             <div class="form-group row mb-3">
                 <div class="col-6">
                     <label class="fw-semibold" for="txtcpf">CPF</label>
-                <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}">
+                <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}" required>
                 </div>
                 <div class="col-6">
                     <label class="fw-semibold" for="txtfone">Telefone</label>
-                <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="${cliente.telefone}">
+                <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="${cliente.telefone}" required>
                 <p th:if="${#fields.hasErrors('telefone')}" th:errors="${cliente.sexo}" class="alert alert-danger"></p>
                 </div>
             </div>

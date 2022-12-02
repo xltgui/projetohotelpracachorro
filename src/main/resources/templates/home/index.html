@@ -157,49 +157,29 @@
       <div class="contato-bg">
         <section id="contato">
           <h1>Contato</h1>
-          <form id="form-contato" action="">
+          <form id="form-contato" action="https://api.staticforms.xyz/submit" method="POST">
+            <input type="hidden" name="accessKey" value="2328232f-2562-4992-a811-99b02eaf7d97">
+            <input type="hidden" name="redirectTo" value="http://localhost:8080/home#contato"> <!-- alterar depois -->
+
             <div class="form-group">
-              <label for="txtNome">Nome</label>
-              <input
-                id="txtNome"
-                class="form-control mb-2"
-                placeholder="Seu nome"
-                type="text"
-              />
+              <label class="fw-semibold" for="txtNome">Nome</label>
+              <input id="txtNome" class="form-control mb-2" name="name" placeholder="Seu nome" type="text" required/>
             </div>
             <div class="form-group">
-              <label for="txtEmail">Endereço de e-mail</label>
-              <input
-                id="txtEmail"
-                class="form-control mb-2"
-                placeholder="exemplo@email.com"
-                type="text"
-              />
+              <label class="fw-semibold" for="txtEmail">Endereço de e-mail</label>
+              <input id="txtEmail" class="form-control mb-2" name="email" placeholder="exemplo@email.com" type="text" required/>
             </div>
             <div class="form-group">
-              <label for="txtMensagem">Mensagem</label>
-              <textarea
-                class="form-control mb-2"
-                id="txtMensagem"
-                placeholder="O que você precisa?"
-                cols="30"
-                rows="6"
-              ></textarea>
+              <label class="fw-semibold" for="txtMensagem">Mensagem</label>
+              <textarea class="form-control mb-2" id="txtMensagem" name="message" placeholder="O que você precisa?" cols="30" rows="6" required ></textarea>
             </div>
-            <button
-              class="btn btn-enviar float-end"
-              type="submit"
-              form="form-contato"
-            >
-              enviar
-            </button>
+            <input class="btn btn-enviar float-end" type="submit" value="enviar"/>
           </form>
           <div class="lista-contatos-wrapper">
             <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
             <ul class="lista-contatos">
               <li>
-                <img th:src="@{/img/icones/Phone-Action.png}" alt="" /> (47)
-                3451-5114
+                <img th:src="@{/img/icones/Phone-Action.png}" alt=""/> (47) 3451-5114
               </li>
               <li>
                 <img
