@@ -1,0 +1,74 @@
+.container {
+    padding: 40px 0px 80px;
+}
+
+.progresso > span {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.progresso-2::before {
+    content: "";
+    position: absolute;
+    width: 49px;
+    height: 4px;
+    display: block;
+    top: calc(50% - 2px);
+    right: 100%;
+}
+
+.progresso-3::before {
+    content: "";
+    position: absolute;
+    width: 49px;
+    height: 4px;
+    display: block;
+    top: calc(50% - 2px);
+    right: 100%;
+}
+
+input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+    z-index: 1;
+}
+
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
+
+.servicos-valor::before {
+    content: "\002B R$ ";
+}
+
+@media (max-width: 768px) {
+    .form-group_duplo {
+        flex-direction: column;
+    }
+    .form-group_duplo .col-6 {
+        width: 100%;
+    }
+    .form-group_duplo .col-6:first-child::after {
+        content: "";
+        width: 100%;
+        height: 16px;
+        display: block;
+    }
+}

@@ -1,5 +1,5 @@
 #apresentacao {
-    padding: 150px 0 80px;
+    padding: 80px 0 60px;
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     align-items: center;
@@ -29,14 +29,13 @@ p {
 
 /* RESERVAS */
 #reserva {
-    padding: 150px 0 80px;
+    padding: 60px 0 60px;
 }
 
 #reserva div {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    margin-top: 16px;
 }
 
 div[class*="porte"] {
@@ -87,7 +86,7 @@ div[class*="porte"] h3 {
 
 /* ADICIONAIS */
 #adicionais {
-    padding: 120px 0 80px;
+    padding: 60px 0 60px;
 }
 
 .lista-servicos {
@@ -109,11 +108,19 @@ div[class*="porte"] h3 {
 
 /* AVALIACOES */
 #avaliacoes {
-    padding: 80px 0 120px;
+    padding: 60px 0 120px;
 }
-#avaliacoes p {
+
+.card-funcionario_paragrafo {
     text-align: center;
     margin-bottom: 0;
+}
+
+ .card-funcionario_paragrafo:after {
+    content: "\2012" attr(data-nomeAvaliador);
+    display: block;
+    text-align: right;
+    font-size: 14px;
 }
 
 #avaliacoes h3 {

@@ -26,12 +26,7 @@
           >
         </div>
         <div class="align-items-center d-flex">
-          <img
-            class="mx-auto"
-            th:src="@{/img/beagle.png}"
-            width="300"
-            alt="filhote de cachorro da raça beagle"
-          />
+          <img class="mx-auto" th:src="@{/img/beagle.png}" width="300" alt="filhote de cachorro da raça beagle" />
         </div>
       </section>
 
@@ -48,26 +43,21 @@
           </div>
           <!-- background image url *raça tal* -->
           <div class="porte-m">
-            <h3 class="text-center align-self-end position-relative">
-              porte <br />
-              médio
+            <h3 class="text-center align-self-end position-relative"> 
+                porte <br /> médio 
             </h3>
             <div class="decorador"></div>
           </div>
           <div class="porte-g">
             <h3 class="text-center align-self-end position-relative">
-              porte <br />
-              grande
+              porte <br /> grande
             </h3>
             <div class="decorador"></div>
           </div>
         </div>
       </section>
 
-      <section
-        id="adicionais"
-        class="container d-flex align-items-center justify-content-between"
-      >
+      <section id="adicionais" class="container d-flex align-items-center justify-content-between">
         <div style="max-width: 350px">
           <h1>Serviços adicionais</h1>
           <p>
@@ -111,10 +101,8 @@
             >
               <h3>Stephany</h3>
               <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="" />
-              <p>
-                <i
-                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
-                >
+              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Josefa">
+                <i>“A Stephany foi muito cuidadosa com a Lilica durante a sua estadia. Me deixou tranquila mandando atualizações e fotos da sua adaptação. Recomendo a todos!”</i>
               </p>
               <div>
                 <!-- estrelinhas -->
@@ -126,10 +114,8 @@
             >
               <h3>Mirella</h3>
               <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="" />
-              <p>
-                <i
-                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
-                >
+              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Vinícius">
+                <i>“Excelente, sentimos que a Chiquinha estava em ótimas mãos! Chegou em casa e capotou de cansaço hahahaha”</i>
               </p>
               <div>
                 <!-- estrelinhas -->
@@ -141,10 +127,8 @@
             >
               <h3>Guilherme</h3>
               <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="" />
-              <p>
-                <i
-                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
-                >
+              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Júlia">
+                <i>“Fiquei totalmente satisfeita com o Hotel Bom pra Cachorro! O Guilherme foi super carinhoso e prestativo. A minha cachorrinha ficou muito bem com eles!”</i>
               </p>
               <div>
                 <!-- estrelinhas -->
@@ -157,49 +141,29 @@
       <div class="contato-bg">
         <section id="contato">
           <h1>Contato</h1>
-          <form id="form-contato" action="">
+          <form id="form-contato" action="https://api.staticforms.xyz/submit" method="POST">
+            <input type="hidden" name="accessKey" value="2328232f-2562-4992-a811-99b02eaf7d97">
+            <input type="hidden" name="redirectTo" value="http://localhost:8080/home#contato"> <!-- alterar depois -->
+
             <div class="form-group">
-              <label for="txtNome">Nome</label>
-              <input
-                id="txtNome"
-                class="form-control mb-2"
-                placeholder="Seu nome"
-                type="text"
-              />
+              <label class="fw-semibold" for="txtNome">Nome</label>
+              <input id="txtNome" class="form-control mb-2" name="name" placeholder="Seu nome" type="text" required/>
             </div>
             <div class="form-group">
-              <label for="txtEmail">Endereço de e-mail</label>
-              <input
-                id="txtEmail"
-                class="form-control mb-2"
-                placeholder="exemplo@email.com"
-                type="text"
-              />
+              <label class="fw-semibold" for="txtEmail">Endereço de e-mail</label>
+              <input id="txtEmail" class="form-control mb-2" name="email" placeholder="exemplo@email.com" type="text" required/>
             </div>
             <div class="form-group">
-              <label for="txtMensagem">Mensagem</label>
-              <textarea
-                class="form-control mb-2"
-                id="txtMensagem"
-                placeholder="O que você precisa?"
-                cols="30"
-                rows="6"
-              ></textarea>
+              <label class="fw-semibold" for="txtMensagem">Mensagem</label>
+              <textarea class="form-control mb-2" id="txtMensagem" name="message" placeholder="O que você precisa?" cols="30" rows="6" required ></textarea>
             </div>
-            <button
-              class="btn btn-enviar float-end"
-              type="submit"
-              form="form-contato"
-            >
-              enviar
-            </button>
+            <input class="btn btn-enviar float-end" type="submit" value="enviar"/>
           </form>
           <div class="lista-contatos-wrapper">
             <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
             <ul class="lista-contatos">
               <li>
-                <img th:src="@{/img/icones/Phone-Action.png}" alt="" /> (47)
-                3451-5114
+                <img th:src="@{/img/icones/Phone-Action.png}" alt=""/> (47) 3451-5114
               </li>
               <li>
                 <img
