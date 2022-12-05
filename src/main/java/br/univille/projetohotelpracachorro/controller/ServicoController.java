@@ -47,6 +47,6 @@ public class ServicoController {
     @GetMapping("delete/{id}")
     public ModelAndView delete(@PathVariable("id") long id){
         servicoService.delete(id);
-        return new ModelAndView("redirect:/funcionarios");
+        return new ModelAndView("redirect:/servicos");
     }
 }

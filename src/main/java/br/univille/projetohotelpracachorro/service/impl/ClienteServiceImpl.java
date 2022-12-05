@@ -28,12 +28,14 @@ public class ClienteServiceImpl implements ClienteService {
         if(novoCliente == null){
             novoCliente = new Cliente();
         }
+        novoCliente.getListaCachorros().clear();
         novoCliente.setCPF(cliente.getCPF());
         //novoCliente.setListaCachorros(cliente.getListaCachorros());
         novoCliente.getListaCachorros().addAll(cliente.getListaCachorros());
         novoCliente.setNome(cliente.getNome());
         novoCliente.setTelefone(cliente.getTelefone());
-        novoCliente.getListaCachorros().clear();
+        novoCliente.setId(cliente.getId());
+        
         
         return repositorio.save(novoCliente);
     }

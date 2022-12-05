@@ -1,5 +1,6 @@
 package br.univille.projetohotelpracachorro.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -49,6 +50,25 @@ public class ClienteController {
         return new ModelAndView("cliente/form", dados);
     }
 
+    @GetMapping("/novo/{idcachorro}")
+    public ModelAndView novoComCachorro(@PathVariable(name = "idcachorro") long idcachorro) {
+        var cliente = new VincClienteCachorroDTO();
+//        VincClienteCachorroDTO novoCachorro = new VincClienteCachorroDTO();
+        
+        var listaCachorros = new ArrayList<Cachorro>();
+        var cachorroSelecionado = cachorroService.findById(idcachorro);
+        listaCachorros.add(cachorroSelecionado);
+        
+        cliente.getListaCachorros().add(cachorroSelecionado);
+        
+
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("cliente", cliente);
+        dados.put("listaDisponiveis", listaCachorros);
+//        dados.put("novoCachorro", novoCachorro);
+        return new ModelAndView("cliente/form", dados);
+    }
+
     @PostMapping(params = "save")
     public ModelAndView save(VincClienteCachorroDTO cliente) {
         
@@ -58,8 +78,8 @@ public class ClienteController {
 
     @PostMapping(params = "agendarReserva")
     public ModelAndView agendarReserva(VincClienteCachorroDTO cliente){
-        clienteService.save(cliente);
-        return new ModelAndView("redirect:/reservas/novo");
+        var clienteSalvo = clienteService.save(cliente);
+        return new ModelAndView("redirect:/reservas/novo/" + clienteSalvo.getId());
     }
 
     @PostMapping(params = "vincdog")

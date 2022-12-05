@@ -8,7 +8,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <a href="/clientes/novo" class="btn btn-primary">Novo</a>
+        <a href="/clientes/novo" class="btn">Novo</a>
         <table class="table" id="tabclientes">
             <thead>
                 <tr>
@@ -32,8 +32,8 @@
                       </ul>
                     </td>-->
                     <td>
-                        <a th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn btn-warning">Alterar</a>
-                <button class="btn btn-danger js-delete" th:data-id="${cliente.id}">Excluir</button>
+                        <a th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn">Alterar</a>
+                <button class="btn js-delete" th:data-id="${cliente.id}">Excluir</button>
                     </td>
                 </tr>
             </tbody>
@@ -51,15 +51,16 @@
               <p>Confirma a exclusão do cliente?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
-              <button type="button" class="btn btn-primary" id="btnClienteSim">Sim</button>
+              <button type="button" class="btn" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
+              <button type="button" class="btn" id="btnClienteSim">Sim</button>
             </div>
           </div>
         </div>
       </div>
 
     <footer th:include="layout :: footer"></footer>
-    <script th:src="@{/scriptClientes.js}"></script>
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptClientes.js}"></script>
 </body>
 
 </html>

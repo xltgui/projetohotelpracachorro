@@ -8,24 +8,33 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <form th:action="@{/cachorros/(form)}" method="POST" th:object="${cachorro}">
+        <div class="progresso d-flex gap-5 justify-content-center mb-4">
+            <span class="progresso-1 text-bg-warning">1</span>
+            <span class="progresso-2 text-bg-secondary">2</span>
+            <span class="progresso-3 text-bg-secondary">3</span>
+        </div>
+        <h4 class="mb-4">Antes de fazer a reserva você precisa nos passar algumas informações. Comece informando os dados do seu animal:</h4>
+        <form th:action="@{/cachorros/(form)}" method="POST" th:object="${cachorro}" class="w-50 mx-auto">
             <input type="hidden" th:field="*{id}">
-            <div class="form-group">
-                <label for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" th:field="*{nomeCachorro}">
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtnome">Nome</label>
+                <input type="text" class="form-control" id="txtnome" placeholder="Digite o nome do seu cachorro" th:field="*{nomeCachorro}">
             </div>
 
-            <div class="form-group">
-                <label for="txtpeso">Peso</label>
-                <input type="text" class="form-control" id="txtpeso" th:field="*{peso}">
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtpeso">Peso</label>
+                <input type="text" class="form-control" placeholder="20" id="txtpeso" th:field="*{peso}">
             </div>
 
-            <!--<button type="submit" class="btn btn-primary">Enviar</button>-->
-            <button type="submit" name="continuar" href="http://localhost:8080/clientes/novo" class="btn btn-success">Continuar</button>
+            <!--<button type="submit" class="btn ">Enviar</button>-->
+            <div class="d-flex justify-content-end"><button type="submit" name="continuar" href="http://localhost:8080/clientes/novo" class="btn btn-continuar">continuar</button></div>
+            
 
         </form>
     </main>
     <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
+    <div th:include="layout :: imports"></div>
 </body>
     
 </html>

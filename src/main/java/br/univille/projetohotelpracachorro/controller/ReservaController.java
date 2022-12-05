@@ -1,5 +1,6 @@
 package br.univille.projetohotelpracachorro.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.projetohotelpracachorro.dto.ReservaDTO;
 import br.univille.projetohotelpracachorro.entity.Cachorro;
+import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.entity.Reserva;
 import br.univille.projetohotelpracachorro.entity.Servico;
 import br.univille.projetohotelpracachorro.service.CachorroService;
@@ -53,6 +55,26 @@ public class ReservaController {
         var listaAtendentes = funcionarioService.getAll();
         var listaClientes = clienteService.getAll();
         var listaCachorros = cachorroService.getAll();
+        var listaServicos = servicoService.getAll();
+        HashMap<String, Object> dados = new HashMap<>();
+
+        dados.put("listaClientes", listaClientes);
+        dados.put("reserva", novaReserva);
+        dados.put("listaCachorros", listaCachorros);
+        dados.put("listaServicos", listaServicos);
+        dados.put("listaAtendentes", listaAtendentes);
+        return new ModelAndView("reserva/form", dados);
+    }
+    
+    @GetMapping("/novo/{idcliente}")
+    public ModelAndView novoComCliente(@PathVariable(name = "idcliente") long idcliente) {
+        var novaReserva = new ReservaDTO();
+
+        var listaAtendentes = funcionarioService.getAll();
+        var listaClientes = new ArrayList<Cliente>();
+        var clientSelecionado = clienteService.findClienteById(idcliente);
+        listaClientes.add(clientSelecionado);
+        var listaCachorros = clientSelecionado.getListaCachorros();
         var listaServicos = servicoService.getAll();
         HashMap<String, Object> dados = new HashMap<>();
 

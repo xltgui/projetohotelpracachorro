@@ -8,7 +8,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-    <a href="/funcionarios/novo" class="btn btn-primary">Novo</a>
+    <a href="/funcionarios/novo" class="btn">Novo</a>
     <table class="table" id="tabfuncionarios">
         <thead>
             <tr>
@@ -26,8 +26,8 @@
                 <td th:text="${umFuncionario.funcao}"></td>
                 <td th:text="${umFuncionario.avaliacao}"></td>
                 <td>
-                    <a th:href="@{'/funcionarios/alterar/' + ${umFuncionario.id}}" class="btn btn-warning">Alterar</a>
-                <button class="btn btn-danger js-delete" th:data-id="${umFuncionario.id}">Excluir</button>
+                    <a th:href="@{'/funcionarios/alterar/' + ${umFuncionario.id}}" class="btn">Alterar</a>
+                <button class="btn js-delete" th:data-id="${umFuncionario.id}">Excluir</button>
                 </td>
             </tr>
         </tbody>
@@ -45,14 +45,15 @@
               <p>Confirma a exclusão do funcionário?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnFuncionarioNao">Não</button>
-              <button type="button" class="btn btn-primary" id="btnFuncionarioSim">Sim</button>
+              <button type="button" class="btn" data-bs-dismiss="modal" id="btnFuncionarioNao">Não</button>
+              <button type="button" class="btn" id="btnFuncionarioSim">Sim</button>
             </div>
           </div>
         </div>
       </div>
     <footer th:include="layout :: footer"></footer>
-    <script th:src="@{/scriptFuncionarios.js}"></script>
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptFuncionarios.js}"></script>
 </body>
 
 </html>

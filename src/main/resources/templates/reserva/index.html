@@ -8,7 +8,7 @@
 <body>
     <nav th:replace="layout :: menu"></nav>
     <main class="container">
-        <a href="/cachorros/novo" class="btn btn-success">Nova Reserva</a>
+        <a href="/reservas/novo" class="btn">Novo</a>
         <table class="table" id="tabreservas">
             <thead>
                 <tr>
@@ -59,8 +59,8 @@
 
                 <td th:text="${umaReserva.getTotalReserva}"></td>
                 <td>
-                    <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn btn-warning">Alterar</a>
-                    <button class="btn btn-danger js-delete" th:data-id="${umaReserva.id}">Excluir</button>
+                    <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
+                    <button class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
                 </td>
             </tbody>
 
@@ -78,14 +78,15 @@
               <p>Confirma a exclusão da reserva?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
-              <button type="button" class="btn btn-primary" id="btnReservaSim">Sim</button>
+              <button type="button" class="btn" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
+              <button type="button" class="btn" id="btnReservaSim">Sim</button>
             </div>
           </div>
         </div>
       </div>
     <footer th:include="layout :: footer"></footer>
-    <script th:src="@{/scriptReservas.js}"></script>
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptReservas.js}"></script>
 </body>
 
 </html>

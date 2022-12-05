@@ -4,6 +4,33 @@
 </html>
 
 <head th:include="layout :: head"></head>
+<style>
+    input[type="date"] {
+        position: relative;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        color: transparent;
+        background: transparent;
+    }
+
+    /* adjust increase/decrease button */
+    input[type="date"]::-webkit-inner-spin-button {
+        z-index: 1;
+    }
+
+    /* adjust clear button */
+    input[type="date"]::-webkit-clear-button {
+        z-index: 1;
+    }
+</style>
 
 <body>
     <nav th:replace="layout :: menu"></nav>
@@ -11,8 +38,8 @@
         <form th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}">
             <input type="hidden" th:field="*{id}">
 
-            <div class="form-group">
-                <label for="txtatendente">Atendente</label>
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtatendente">Atendente</label>
                 <select th:field="*{listaAtendentes}" class="form-select">
                     <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
                         th:text="${umAtendente.nome}">
@@ -20,18 +47,18 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="txtdataentrada">Data de Entrada</label>
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtdataentrada">Data de Entrada</label>
                 <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}">
             </div>
 
-            <div class="form-group">
-                <label for="txtdatasaida">Data de Saída</label>
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtdatasaida">Data de Saída</label>
                 <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}">
             </div>
 
-            <div class="form-group">
-                <label for="txtcliente">Cliente</label>
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtcliente">Cliente</label>
                 <select th:field="*{listaClientes}" class="form-select">
                     <option th:each="umCliente : ${listaClientes}" th:value="${umCliente.id}"
                         th:text="${umCliente.nome}">
@@ -39,8 +66,8 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="txtcachorro">Cachorros</label>
+            <div class="form-group mb-3">
+                <label class="fw-semibold" for="txtcachorro">Cachorros</label>
                 <select th:field="*{Cachorro}" class="form-select">
                     <option th:each="umCachorro : ${listaCachorros}" th:value="${umCachorro.id}"
                         th:text="${umCachorro.nomeCachorro}">
@@ -72,7 +99,7 @@
 
 
                                 <td>
-                                    <button class="btn btn-danger" type="submit" name="removeservico"
+                                    <button class="btn" type="submit" name="removeservico"
                                         th:value="__${stat.index}__">Remover</button>
                                 </td>
                             </tr>
@@ -80,34 +107,34 @@
                     </table>
                 </div>
             </div>-->
-            
-            
+
+
             <!--<div class="card">
                 <div class="card-body">-->
-                        <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Serviços adicionais</th>
-                                <th>Preço</th>
-                            </tr>
-                        </thead>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Serviços adicionais</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr th:each="umServico : ${listaServicos}">
-                                <td>
-                                    <input type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
-                                    <label th:text="${umServico.nome}"></label>
-                                </td>
+                <tbody>
+                    <tr th:each="umServico : ${listaServicos}">
+                        <td>
+                            <input type="checkbox" th:field="*{listaServicos}" th:value="${umServico.id}">
+                            <label th:text="${umServico.nome}"></label>
+                        </td>
 
-                                <td>
-                                    <label th:text="${umServico.valorServico}"></label>
-                                </td>
-                </tr>
+                        <td>
+                            <label th:text="${umServico.valorServico}"></label>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-                
 
-                    <!--<div class="form-group">
+
+            <!--<div class="form-group">
                         <label for="cbservico">Serviço</label>
                         <select class="form-select" id="cbservico" th:field="*{novoServico}">
                             <option th:each="umServico : ${listaServicos}" th:value="${umServico.id}"
@@ -115,17 +142,19 @@
                             </option>
                         </select>
                     </div>
-                    <button type="submit" name="vincservico" class="btn btn-info">Vincular Serviço</button>-->
-                <!--</div>
+                    <button type="submit" name="vincservico" class="btn">Vincular Serviço</button>-->
+            <!--</div>
             </div>-->
-        
 
-            
-            <button type="submit" name="save" class="btn btn-success">Concluir</button>
+
+            <div class="d-flex justify-content-end mt-2">
+                <button type="submit" name="save" class="btn">concluir</button>
+            </div>
         </form>
-        
+
     </main>
     <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
 </body>
 
 </html>
