@@ -45,7 +45,7 @@ public class CachorroController {
     @PostMapping(params = "continuar")
     public ModelAndView continuar(Cachorro cachorro){
         cachorroService.save(cachorro);
-        return new ModelAndView("redirect:/clientes/novo");
+        return new ModelAndView("redirect:/clientes/novo/" + cachorro.getId());
     }
     
     @GetMapping("/alterar/{id}")
