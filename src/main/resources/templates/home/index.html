@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head th:include="layout :: head"> </head>
 
-<head th:include="homeLayout :: head">
-
-</head>
-
-<body>
-    <header th:replace="homeLayout :: menu"></header>
+  <body>
+    <header th:replace="layout :: menu"></header>
 
     <main>
       <section id="apresentacao" class="container">
@@ -36,118 +35,199 @@
         </div>
       </section>
 
-        <section id="reserva" class="container">
-            <h1>Selecione o porte do seu cachorro para fazer a reserva</h1>
+      <section id="reserva" class="container">
+        <h1>Reservas de acordo com o porte do seu cachorro</h1>
 
-            <div>
-                <div class=" porte-p">
-                    <h3 class="text-center align-self-end position-relative">porte <br> pequeno</h3>
-                    <div class="decorador"></div>
-                </div> <!-- background image url *raça tal* -->
-                <div class="porte-m">
-                    <h3 class="text-center align-self-end position-relative">porte <br> médio</h3>
-                    <div class="decorador"></div>
-                </div>
-                <div class="porte-g">
-                    <h3 class="text-center align-self-end position-relative">porte <br> grande</h3>
-                    <div class="decorador"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="adicionais" class="container d-flex align-items-center justify-content-between">
-            <div style="max-width: 350px;">
-                <h1>Serviços adicionais</h1>
-                <p>Ao fazer uma reserva você pode escolher alguns dos nossos serviços adicionais!</p>
-            </div>
-
-            <div>
-                <ul class="lista-servicos">
-                    <li><img th:src="@{/img/icones/tosa.png}" alt="" width="40"> Banho e tosa
-                    </li>
-                    <li><img th:src="@{/img/icones/taxi-dog.png}" alt="" width="45">Táxi dog</li>
-                    <li><img th:src="@{/img/icones/vet.png}" alt="" width="45">Serviços veterinários</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="avaliacoes" class="container">
-            <img class="d-block mx-auto mb-5" th:src="@{/img/icones/dog-certificate-quality.png}" width="60" alt="">
-
-            <div>
-                <h1>Saiba o que acham da nossa equipe!</h1>
-
-                <div class="grid gap-4">
-                    <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
-                        <h3>Stephany</h3>
-                        <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="">
-                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
-                        <div>
-                            <!-- estrelinhas -->
-                        </div>
-                    </div>
-
-                    <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
-                        <h3>Mirella</h3>
-                        <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="">
-                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
-                        <div>
-                            <!-- estrelinhas -->
-                        </div>
-                    </div>
-
-                    <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
-                        <h3>Guilherme</h3>
-                        <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="">
-                        <p><i>“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i></p>
-                        <div>
-                            <!-- estrelinhas -->
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <div class="contato-bg">
-            <section id="contato">
-                <h1>Contato</h1>
-                <form id="form-contato" action="">
-                    <div class="form-group">
-                        <label for="txtNome">Nome</label>
-                        <input id="txtNome" class="form-control mb-2" placeholder="Seu nome" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtEmail">Endereço de e-mail</label>
-                        <input id="txtEmail" class="form-control mb-2" placeholder="exemplo@email.com" type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMensagem">Mensagem</label>
-                        <textarea class="form-control mb-2" id="txtMensagem" placeholder="O que você precisa?" cols="30" rows="6"></textarea>
-                    </div>
-                    <button class="btn btn-enviar float-end" type="submit" form="form-contato">enviar</button>
-                </form>
-                <div class="lista-contatos-wrapper">
-                    <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
-                    <ul class="lista-contatos">
-                        <li><img th:src="@{/img/icones/Phone-Action.png}" alt=""> (47) 3451-5114</li>
-                        <li><img th:src="@{/img/icones/Computer-Logo-Communication-Whatsapp.png}" alt=""> (47) 99985-3252</li>
-                        <li><img th:src="@{/img/icones/Map-location-Pin.png}" alt=""> Rua das Capivaras, 51 - Iririú | 89224-150 <br> Joinville - SC</li>
-                    </ul>
-                </div>
-            </section>
+        <div>
+          <div class="porte-p">
+            <h3 class="text-center align-self-end position-relative">
+              porte <br />
+              pequeno
+            </h3>
+            <div class="decorador"></div>
+          </div>
+          <!-- background image url *raça tal* -->
+          <div class="porte-m">
+            <h3 class="text-center align-self-end position-relative">
+              porte <br />
+              médio
+            </h3>
+            <div class="decorador"></div>
+          </div>
+          <div class="porte-g">
+            <h3 class="text-center align-self-end position-relative">
+              porte <br />
+              grande
+            </h3>
+            <div class="decorador"></div>
+          </div>
         </div>
+      </section>
+
+      <section
+        id="adicionais"
+        class="container d-flex align-items-center justify-content-between"
+      >
+        <div style="max-width: 350px">
+          <h1>Serviços adicionais</h1>
+          <p>
+            Ao fazer uma reserva você pode escolher alguns dos nossos serviços
+            adicionais!
+          </p>
+        </div>
+
+        <div>
+          <ul class="lista-servicos">
+            <li>
+              <img th:src="@{/img/icones/tosa.png}" alt="" width="40" /> Banho e
+              tosa
+            </li>
+            <li>
+              <img th:src="@{/img/icones/taxi-dog.png}" alt="" width="45" />Táxi
+              dog
+            </li>
+            <li>
+              <img th:src="@{/img/icones/vet.png}" alt="" width="45" />Serviços
+              veterinários
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="avaliacoes" class="container">
+        <img
+          class="d-block mx-auto mb-5"
+          th:src="@{/img/icones/dog-certificate-quality.png}"
+          width="60"
+          alt=""
+        />
+
+        <div>
+          <h1>Saiba o que acham da nossa equipe!</h1>
+
+          <div class="grid gap-4">
+            <div
+              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
+            >
+              <h3>Stephany</h3>
+              <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="" />
+              <p>
+                <i
+                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
+                >
+              </p>
+              <div>
+                <!-- estrelinhas -->
+              </div>
+            </div>
+
+            <div
+              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
+            >
+              <h3>Mirella</h3>
+              <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="" />
+              <p>
+                <i
+                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
+                >
+              </p>
+              <div>
+                <!-- estrelinhas -->
+              </div>
+            </div>
+
+            <div
+              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
+            >
+              <h3>Guilherme</h3>
+              <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="" />
+              <p>
+                <i
+                  >“Lorem ipsum dolor sit amet, consectetur adipiscing elit.”</i
+                >
+              </p>
+              <div>
+                <!-- estrelinhas -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="contato-bg">
+        <section id="contato">
+          <h1>Contato</h1>
+          <form id="form-contato" action="">
+            <div class="form-group">
+              <label for="txtNome">Nome</label>
+              <input
+                id="txtNome"
+                class="form-control mb-2"
+                placeholder="Seu nome"
+                type="text"
+              />
+            </div>
+            <div class="form-group">
+              <label for="txtEmail">Endereço de e-mail</label>
+              <input
+                id="txtEmail"
+                class="form-control mb-2"
+                placeholder="exemplo@email.com"
+                type="text"
+              />
+            </div>
+            <div class="form-group">
+              <label for="txtMensagem">Mensagem</label>
+              <textarea
+                class="form-control mb-2"
+                id="txtMensagem"
+                placeholder="O que você precisa?"
+                cols="30"
+                rows="6"
+              ></textarea>
+            </div>
+            <button
+              class="btn btn-enviar float-end"
+              type="submit"
+              form="form-contato"
+            >
+              enviar
+            </button>
+          </form>
+          <div class="lista-contatos-wrapper">
+            <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
+            <ul class="lista-contatos">
+              <li>
+                <img th:src="@{/img/icones/Phone-Action.png}" alt="" /> (47)
+                3451-5114
+              </li>
+              <li>
+                <img
+                  th:src="@{/img/icones/Computer-Logo-Communication-Whatsapp.png}"
+                  alt=""
+                />
+                (47) 99985-3252
+              </li>
+              <li>
+                <img th:src="@{/img/icones/Map-location-Pin.png}" alt="" /> Rua
+                das Capivaras, 51 - Iririú | 89224-150 <br />
+                Joinville - SC
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
     </main>
 
-    <footer th:include="homeLayout :: footer"></footer>
-
-    <div th:include="homeLayout :: imports"></div>
+    <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
     <script>
-        const loop = setInterval(() => {
-            let larguraPai = document.querySelector('.porte-p').clientWidth;
-            document.querySelectorAll('.decorador').forEach((elemento) => elemento.style.width = `${larguraPai}px`)
-        }, 10);
+      const loop = setInterval(() => {
+        let larguraPai = document.querySelector(".porte-p").clientWidth;
+        document
+          .querySelectorAll(".decorador")
+          .forEach((elemento) => (elemento.style.width = `${larguraPai}px`));
+      }, 10);
     </script>
-</body>
-
+  </body>
 </html>
