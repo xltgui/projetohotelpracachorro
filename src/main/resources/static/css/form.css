@@ -53,12 +53,22 @@ input[type="date"]::-webkit-inner-spin-button {
 input[type="date"]::-webkit-clear-button {
     z-index: 1;
 }
+
 .servicos-valor::before {
     content: "\002B R$ ";
 }
 
 @media (max-width: 768px) {
-    form.w-50 {
-        width: 97% !important;
+    .form-group_duplo {
+        flex-direction: column;
+    }
+    .form-group_duplo .col-6 {
+        width: 100%;
+    }
+    .form-group_duplo .col-6:first-child::after {
+        content: "";
+        width: 100%;
+        height: 16px;
+        display: block;
     }
 }

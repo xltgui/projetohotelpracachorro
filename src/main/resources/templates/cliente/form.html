@@ -15,24 +15,33 @@
         </div>
         <h4 class="mb-4">Agora suas informações pessoais:</h4>
 
-        <form class="w-50 mx-auto" th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}">
+        <form class="w-50 mx-auto needs-validation" th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}" novalidate>
 
             <input type="hidden" th:field="*{id}">
 
             <div class="form-group mb-3">
                 <label class="fw-semibold" for="txtnome">Nome</label>
                 <input type="text" class="form-control" id="txtnome" placeholder="Digite seu nome" th:field="*{nome}" required>
+                <div class="invalid-feedback">
+                    Preencha este campo
+                </div>
             </div>
 
-            <div class="form-group row mb-3">
+            <div class="form-group form-group_duplo row mb-3">
                 <div class="col-6">
                     <label class="fw-semibold" for="txtcpf">CPF</label>
-                <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}" required>
+                    <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}" required>
+                    <div class="invalid-feedback">
+                        Preencha este campo
+                    </div>
                 </div>
                 <div class="col-6">
                     <label class="fw-semibold" for="txtfone">Telefone</label>
-                <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="${cliente.telefone}" required>
-                <p th:if="${#fields.hasErrors('telefone')}" th:errors="${cliente.sexo}" class="alert alert-danger"></p>
+                    <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="${cliente.telefone}" required>
+                    <div class="invalid-feedback">
+                        Preencha este campo
+                    </div>
+                    <p th:if="${#fields.hasErrors('telefone')}" th:errors="${cliente.sexo}" class="alert alert-danger"></p>
                 </div>
             </div>
 
@@ -109,5 +118,6 @@
     </main>
     <footer th:include="layout :: footer"></footer>
     <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/validacaoForms.js}"></script>
   </body>
 </html>

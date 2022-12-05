@@ -53,3 +53,10 @@ p {
 .progresso .text-bg-secondary::before {
     background: #6c757d;
 }
+
+@media (max-width: 768px) {
+    .container {
+        width: 97% !important;
+        margin: 0 auto;
+    }
+}
