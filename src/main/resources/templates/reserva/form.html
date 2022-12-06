@@ -13,19 +13,19 @@
         </div>
         <h4 class="mb-4">Por fim, escolha os dados da reserva:</h4>
 
-        <form class="needs-validation" th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}" novalidate>
+        <form class="needs-validation position-relative" th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}" novalidate>
             <input type="hidden" th:field="*{id}">
 
             <div class="form-group form-group_duplo row mb-3">
                 <div class="col-6">
-                    <label class="fw-semibold" for="txtdataentrada">Data de Entrada</label>
+                    <label class="fw-semibold" for="txtdataentrada">Data de entrada</label>
                     <input type="date" class="form-control" id="txtdataentrada" th:field="*{dataEntrada}" required>    
                     <div class="invalid-feedback">
                         Escolha uma data
                     </div>
                 </div>
                 <div class="col-6">
-                    <label class="fw-semibold" for="txtdatasaida">Data de Saída</label>
+                    <label class="fw-semibold" for="txtdatasaida">Data de saída</label>
                     <input type="date" class="form-control" id="txtdatasaida" th:field="*{dataSaida}" required>
                     <div class="invalid-feedback">
                         Escolha uma data
@@ -33,28 +33,22 @@
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label class="fw-semibold" for="txtcliente">Cliente</label>
+            <div class="form-group mb-3 invisible position-absolute top-0 start-0">
+                <!-- <label class="fw-semibold" for="txtcliente">Cliente</label> -->
                 <select th:field="*{listaClientes}" class="form-select" required>
                     <option th:each="umCliente : ${listaClientes}" th:value="${umCliente.id}"
                         th:text="${umCliente.nome}">
                     </option>
                 </select>
-                <div class="invalid-feedback">
-                    Seleciona uma opção
-                </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label class="fw-semibold" for="txtcachorro">Cachorros</label>
+            <div class="form-group mb-3 invisible position-absolute top-0 start-0">
+                <!-- <label class="fw-semibold" for="txtcachorro">Cachorros</label> -->
                 <select th:field="*{Cachorro}" class="form-select" required>
                     <option th:each="umCachorro : ${listaCachorros}" th:value="${umCachorro.id}"
                         th:text="${umCachorro.nomeCachorro}">
                     </option>
                 </select>
-                <div class="invalid-feedback">
-                    Seleciona uma opção
-                </div>
             </div>
 
             <div class="form-group mb-4">
@@ -132,8 +126,13 @@
             <!--</div>
             </div>-->
 
+            <div class="form-group d-flex">
+                <h5 class="fs-5 fw-semibold" style="font-family: Poppins;">Total da reserva:</h5>
+                <!-- valor aqui -->
+            </div>
+
             <div class="d-flex justify-content-end mt-2">
-                <button type="submit" name="save" class="btn">confirmar</button>
+                <button id="btn-confirmar" type="submit" name="save" class="btn">confirmar</button>
             </div>
         </form>
 

@@ -12,6 +12,19 @@ header .nav-item:nth-child(2) {
     color: #f39501;
 }
 
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 99;
+    min-width: 100%;
+}
+
+.header-inner {
+    max-width: 960px;
+}
+
 /* footer */
 footer {
     color: #ed9107;

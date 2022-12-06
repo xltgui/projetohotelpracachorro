@@ -193,4 +193,10 @@ public class ReservaController {
         return new ModelAndView("redirect:/reservas");
     }
 
+    @GetMapping("/agendada")
+    public ModelAndView reservaAgendada() {
+        return new ModelAndView("reserva/confirmacao");
+    
+    }
+
 }
