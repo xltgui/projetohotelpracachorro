@@ -14,49 +14,51 @@
 </head>
 
 <body>
-    <header th:fragment="menu" class="d-flex flex-wrap justify-content-between py-3 mb-4 container gap-4">
-        <ul class="d-flex w-100 gap-4 flex-wrap">
-            <li class="">
+    <header th:fragment="menu" class=" ">
+      <div class="header-inner d-flex flex-wrap justify-content-between py-3 mb-4 container gap-4">
+          <ul class="d-flex w-100 gap-4 flex-wrap">
+              <li>
               <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
-            </li>
-    
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/clientes">Clientes</a>
-            </li>
-    
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/cachorros">Cachorros</a>
-            </li>
-    
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/funcionarios">Funcionarios</a>
-            </li>
-    
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/reservas">Reservas</a>
-            </li>
-    
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/servicos">Serviços</a>
-            </li>
-            
-            <li class="">
+              </li>
+
+              <li>
               <a class="nav-link" href="/bancodedados">Database</a>
-            </li>
-          </ul>
-          
-        <a href="/home" class="d-flex align-items-center text-decoration-none ">
-            <img class="d-block mx-auto" th:src="@{/img/logo-BPC.svg}" alt="" width="40">
-        </a>
-        <nav>
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/home" class="nav-link" aria-current="page">home</a></li>
-                <li class="nav-item"><a href="http://localhost:8080/cachorros/novo" class="nav-link">Fazer Reserva</a></li>
-                <li class="nav-item"><a href="/home#adicionais" class="nav-link">serviços adicionais</a></li>
-                <li class="nav-item"><a href="/home#avaliacoes" class="nav-link">equipe</a></li>
-                <li class="nav-item"><a href="/home#contato" class="nav-link">contato</a></li>
-            </ul>
-        </nav>
+              </li>
+        </ul>
+        
+            <a href="/home" class="d-flex align-items-center text-decoration-none ">
+              <img class="d-block mx-auto" th:src="@{/img/logo-BPC.svg}" alt="" width="40">
+          </a>
+          <nav>
+              <ul class="nav nav-pills">
+                  <li class="nav-item"><a href="/home" class="nav-link" aria-current="page">home</a></li>
+                  <li class="nav-item"><a href="http://localhost:8080/cachorros/novo" class="nav-link">Fazer Reserva</a></li>
+                  <li class="nav-item"><a href="/home#adicionais" class="nav-link">serviços adicionais</a></li>
+                  <li class="nav-item"><a href="/home#avaliacoes" class="nav-link">equipe</a></li>
+                  <li class="nav-item"><a href="/home#contato" class="nav-link">contato</a></li>
+              </ul>
+          </nav>
+      </div>
     </header>
 
     <footer th:fragment="footer">

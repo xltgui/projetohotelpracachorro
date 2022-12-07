@@ -1,197 +1,184 @@
 <!DOCTYPE html>
-<html
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-  <head th:include="layout :: head"> </head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-  <body>
-    <header th:replace="layout :: menu"></header>
+<head th:include="layout :: head"> </head>
 
-    <main>
-      <section id="apresentacao" class="container">
-        <div>
-          <h1>Está com viagem programada e não pode levar seu cachorro?</h1>
-          <p>Fique tranquilo. Temos a melhor hospedagem para ele.</p>
-          <p>
-            No hotel Bom Pra Cachorro cada hóspede dispõe de uma acomodação
-            diferenciada, com todo conforto, higiene e segurança que ele merece.
-            Atendemos cachorros de pequeno até grande porte em um espaço seguro
-            e cercado de especialistas apaixonados por eles..
-          </p>
-          <a
-            id="btn-reserva"
-            class="btn text-decoration-none float-end"
-            href="http://localhost:8080/cachorros/novo"
-            >Fazer reserva</a
-          >
+<body>
+  <header th:replace="layout :: menu"></header>
+
+  <main>
+    <section id="apresentacao" class="container">
+      <div>
+        <h1>Está com viagem programada e não pode levar seu cachorro?</h1>
+        <p>Fique tranquilo. Temos a melhor hospedagem para ele.</p>
+        <p>
+          No hotel Bom Pra Cachorro cada hóspede dispõe de uma acomodação
+          diferenciada, com todo conforto, higiene e segurança que ele merece.
+          Atendemos cachorros de pequeno até grande porte em um espaço seguro
+          e cercado de especialistas apaixonados por eles..
+        </p>
+        <a id="btn-reserva" class="btn text-decoration-none float-end" href="http://localhost:8080/cachorros/novo">Fazer
+          reserva</a>
+      </div>
+      <div class="align-items-center d-flex">
+        <img class="mx-auto" th:src="@{/img/beagle.png}" width="300" alt="filhote de cachorro da raça beagle" />
+      </div>
+    </section>
+
+    <section id="reserva" class="container">
+      <h1>Reservas de acordo com o porte do seu cachorro</h1>
+
+      <div>
+        <div class="porte-p">
+          <h3 class="text-center align-self-end position-relative">
+            porte <br />
+            pequeno
+          </h3>
+          <div class="decorador"></div>
         </div>
-        <div class="align-items-center d-flex">
-          <img class="mx-auto" th:src="@{/img/beagle.png}" width="300" alt="filhote de cachorro da raça beagle" />
+        <!-- background image url *raça tal* -->
+        <div class="porte-m">
+          <h3 class="text-center align-self-end position-relative">
+            porte <br /> médio
+          </h3>
+          <div class="decorador"></div>
         </div>
-      </section>
+        <div class="porte-g">
+          <h3 class="text-center align-self-end position-relative">
+            porte <br /> grande
+          </h3>
+          <div class="decorador"></div>
+        </div>
+      </div>
+    </section>
 
-      <section id="reserva" class="container">
-        <h1>Reservas de acordo com o porte do seu cachorro</h1>
+    <section id="adicionais" class="container d-flex align-items-center justify-content-between">
+      <div style="max-width: 350px">
+        <h1>Serviços adicionais</h1>
+        <p>
+          Ao fazer uma reserva você pode escolher alguns dos nossos serviços
+          adicionais!
+        </p>
+      </div>
 
-        <div>
-          <div class="porte-p">
-            <h3 class="text-center align-self-end position-relative">
-              porte <br />
-              pequeno
-            </h3>
-            <div class="decorador"></div>
+      <div>
+        <ul class="lista-servicos">
+          <li>
+            <img th:src="@{/img/icones/tosa.png}" alt="" width="40" /> Banho e
+            tosa
+          </li>
+          <li>
+            <img th:src="@{/img/icones/taxi-dog.png}" alt="" width="45" />Táxi
+            dog
+          </li>
+          <li>
+            <img th:src="@{/img/icones/vet.png}" alt="" width="45" />Serviços
+            veterinários
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="avaliacoes" class="container">
+      <img class="d-block mx-auto mb-5" th:src="@{/img/icones/dog-certificate-quality.png}" width="60" alt="" />
+
+      <div>
+        <h1>Saiba o que acham da nossa equipe!</h1>
+
+        <div class="grid gap-4">
+          <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
+            <h3>Stephany</h3>
+            <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="" />
+            <p class="card-funcionario_paragrafo" data-nomeAvaliador="Josefa">
+              <i>“A Stephany foi muito cuidadosa com a Lilica durante a sua estadia. Me deixou tranquila mandando
+                atualizações e fotos da sua adaptação. Recomendo a todos!”</i>
+            </p>
+            <div>
+              <!-- estrelinhas -->
+            </div>
           </div>
-          <!-- background image url *raça tal* -->
-          <div class="porte-m">
-            <h3 class="text-center align-self-end position-relative"> 
-                porte <br /> médio 
-            </h3>
-            <div class="decorador"></div>
+
+          <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
+            <h3>Mirella</h3>
+            <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="" />
+            <p class="card-funcionario_paragrafo" data-nomeAvaliador="Vinícius">
+              <i>“Excelente, sentimos que a Chiquinha estava em ótimas mãos! Chegou em casa e capotou de cansaço
+                hahahaha”</i>
+            </p>
+            <div>
+              <!-- estrelinhas -->
+            </div>
           </div>
-          <div class="porte-g">
-            <h3 class="text-center align-self-end position-relative">
-              porte <br /> grande
-            </h3>
-            <div class="decorador"></div>
+
+          <div class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2">
+            <h3>Guilherme</h3>
+            <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="" />
+            <p class="card-funcionario_paragrafo" data-nomeAvaliador="Júlia">
+              <i>“Fiquei totalmente satisfeita com o Hotel Bom pra Cachorro! O Guilherme foi super carinhoso e
+                prestativo. A minha cachorrinha ficou muito bem com eles!”</i>
+            </p>
+            <div>
+              <!-- estrelinhas -->
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="adicionais" class="container d-flex align-items-center justify-content-between">
-        <div style="max-width: 350px">
-          <h1>Serviços adicionais</h1>
-          <p>
-            Ao fazer uma reserva você pode escolher alguns dos nossos serviços
-            adicionais!
-          </p>
-        </div>
+    <div class="contato-bg">
+      <section id="contato">
+        <h1>Contato</h1>
+        <form id="form-contato" action="https://api.staticforms.xyz/submit" method="POST">
+          <input type="hidden" name="accessKey" value="2328232f-2562-4992-a811-99b02eaf7d97">
+          <input type="hidden" name="redirectTo" value="http://localhost:8080/home#contato"> <!-- alterar depois -->
 
-        <div>
-          <ul class="lista-servicos">
+          <div class="form-group">
+            <label class="fw-semibold" for="txtNome">Nome</label>
+            <input id="txtNome" class="form-control mb-2" name="name" placeholder="Seu nome" type="text" required />
+          </div>
+          <div class="form-group">
+            <label class="fw-semibold" for="txtEmail">Endereço de e-mail</label>
+            <input id="txtEmail" class="form-control mb-2" name="email" placeholder="exemplo@email.com" type="text"
+              required />
+          </div>
+          <div class="form-group">
+            <label class="fw-semibold" for="txtMensagem">Mensagem</label>
+            <textarea class="form-control mb-2" id="txtMensagem" name="message" placeholder="O que você precisa?"
+              cols="30" rows="6" required></textarea>
+          </div>
+          <input class="btn btn-enviar float-end" type="submit" value="enviar" />
+        </form>
+        <div class="lista-contatos-wrapper">
+          <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
+          <ul class="lista-contatos">
             <li>
-              <img th:src="@{/img/icones/tosa.png}" alt="" width="40" /> Banho e
-              tosa
+              <img th:src="@{/img/icones/Phone-Action.png}" alt="" /> (47) 3451-5114
             </li>
             <li>
-              <img th:src="@{/img/icones/taxi-dog.png}" alt="" width="45" />Táxi
-              dog
+              <img th:src="@{/img/icones/Computer-Logo-Communication-Whatsapp.png}" alt="" />
+              (47) 99985-3252
             </li>
             <li>
-              <img th:src="@{/img/icones/vet.png}" alt="" width="45" />Serviços
-              veterinários
+              <img th:src="@{/img/icones/Map-location-Pin.png}" alt="" /> Rua
+              das Capivaras, 51 - Iririú | 89224-150 <br />
+              Joinville - SC
             </li>
           </ul>
         </div>
       </section>
+    </div>
+  </main>
 
-      <section id="avaliacoes" class="container">
-        <img
-          class="d-block mx-auto mb-5"
-          th:src="@{/img/icones/dog-certificate-quality.png}"
-          width="60"
-          alt=""
-        />
+  <footer th:include="layout :: footer"></footer>
+  <div th:include="layout :: imports"></div>
+  <script>
+    const loop = setInterval(() => {
+      let larguraPai = document.querySelector(".porte-p").clientWidth;
+      document
+        .querySelectorAll(".decorador")
+        .forEach((elemento) => (elemento.style.width = `${larguraPai}px`));
+    }, 10);
+  </script>
+</body>
 
-        <div>
-          <h1>Saiba o que acham da nossa equipe!</h1>
-
-          <div class="grid gap-4">
-            <div
-              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
-            >
-              <h3>Stephany</h3>
-              <img th:src="@{/img/funcionario-1.jpg}" width="140" alt="" />
-              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Josefa">
-                <i>“A Stephany foi muito cuidadosa com a Lilica durante a sua estadia. Me deixou tranquila mandando atualizações e fotos da sua adaptação. Recomendo a todos!”</i>
-              </p>
-              <div>
-                <!-- estrelinhas -->
-              </div>
-            </div>
-
-            <div
-              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
-            >
-              <h3>Mirella</h3>
-              <img th:src="@{/img/funcionario-2.jpg}" width="140" alt="" />
-              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Vinícius">
-                <i>“Excelente, sentimos que a Chiquinha estava em ótimas mãos! Chegou em casa e capotou de cansaço hahahaha”</i>
-              </p>
-              <div>
-                <!-- estrelinhas -->
-              </div>
-            </div>
-
-            <div
-              class="card-funcionario d-flex flex-column align-items-center justify-content-center gap-2"
-            >
-              <h3>Guilherme</h3>
-              <img th:src="@{/img/funcionario-3.jpg}" width="140" alt="" />
-              <p class="card-funcionario_paragrafo" data-nomeAvaliador="Júlia">
-                <i>“Fiquei totalmente satisfeita com o Hotel Bom pra Cachorro! O Guilherme foi super carinhoso e prestativo. A minha cachorrinha ficou muito bem com eles!”</i>
-              </p>
-              <div>
-                <!-- estrelinhas -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="contato-bg">
-        <section id="contato">
-          <h1>Contato</h1>
-          <form id="form-contato" action="https://api.staticforms.xyz/submit" method="POST">
-            <input type="hidden" name="accessKey" value="2328232f-2562-4992-a811-99b02eaf7d97">
-            <input type="hidden" name="redirectTo" value="http://localhost:8080/home#contato"> <!-- alterar depois -->
-
-            <div class="form-group">
-              <label class="fw-semibold" for="txtNome">Nome</label>
-              <input id="txtNome" class="form-control mb-2" name="name" placeholder="Seu nome" type="text" required/>
-            </div>
-            <div class="form-group">
-              <label class="fw-semibold" for="txtEmail">Endereço de e-mail</label>
-              <input id="txtEmail" class="form-control mb-2" name="email" placeholder="exemplo@email.com" type="text" required/>
-            </div>
-            <div class="form-group">
-              <label class="fw-semibold" for="txtMensagem">Mensagem</label>
-              <textarea class="form-control mb-2" id="txtMensagem" name="message" placeholder="O que você precisa?" cols="30" rows="6" required ></textarea>
-            </div>
-            <input class="btn btn-enviar float-end" type="submit" value="enviar"/>
-          </form>
-          <div class="lista-contatos-wrapper">
-            <h4 class="mb-4">Outras formas de entrar em contato conosco:</h4>
-            <ul class="lista-contatos">
-              <li>
-                <img th:src="@{/img/icones/Phone-Action.png}" alt=""/> (47) 3451-5114
-              </li>
-              <li>
-                <img
-                  th:src="@{/img/icones/Computer-Logo-Communication-Whatsapp.png}"
-                  alt=""
-                />
-                (47) 99985-3252
-              </li>
-              <li>
-                <img th:src="@{/img/icones/Map-location-Pin.png}" alt="" /> Rua
-                das Capivaras, 51 - Iririú | 89224-150 <br />
-                Joinville - SC
-              </li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <footer th:include="layout :: footer"></footer>
-    <div th:include="layout :: imports"></div>
-    <script>
-      const loop = setInterval(() => {
-        let larguraPai = document.querySelector(".porte-p").clientWidth;
-        document
-          .querySelectorAll(".decorador")
-          .forEach((elemento) => (elemento.style.width = `${larguraPai}px`));
-      }, 10);
-    </script>
-  </body>
 </html>

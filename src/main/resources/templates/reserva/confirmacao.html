@@ -24,7 +24,10 @@
                 <li>Quando chegar ao hotel, você precisará repassar todos os seus dados e do seu animal com a funcionária da recepção;</li>
                 <li>Você deve trazer todo o material necessário para o cuidado do seu cachorro (alimentação, higiene, medicamentos etc.).</li>
             </ul>
-            <button id="btn-concluir" type="submit" name="concluir" class="btn">Concluir</button>
+            <form class="needs-validtion" th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}" novalidate>
+                <button id="btn-concluir" type="submit" name="concluir" class="btn">Concluir</button>
+            </form>
+            
         </main>
 
         <footer th:include="layout :: footer"></footer>
