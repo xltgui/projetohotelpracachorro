@@ -94,11 +94,13 @@ public class ReservaController {
      * return new ModelAndView("redirect:/reservas");
      * }
      */
+    
+     
 
-    @PostMapping(params = "save")
+    @PostMapping(params = "confirmar")
     public ModelAndView save(ReservaDTO reserva) {
         reservaService.save(reserva);
-        return new ModelAndView("redirect:/reservas");
+        return new ModelAndView("redirect:/reservas/agendada");
     }
 
     @PostMapping(params = "vincservico")
@@ -191,6 +193,12 @@ public class ReservaController {
         reservaService.delete(id);
 
         return new ModelAndView("redirect:/reservas");
+    }
+
+    @GetMapping("/agendada")
+    public ModelAndView reservaAgendada() {
+        return new ModelAndView("reserva/confirmacao");
+
     }
 
 }

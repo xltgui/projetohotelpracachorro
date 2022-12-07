@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+    <head th:include="layout :: head"></head>
+
+    <style>
+        .obs-hospedagem li {
+            list-style: inside;
+            list-style-type: disclosure-closed;
+            margin-bottom: 5px;
+        }
+        .obs-hospedagem li::marker {
+            color: #ed9107;
+        }
+    </style>
+
+    <body>
+        <nav th:replace="layout :: menu"></nav>
+        <main class="container">
+            <h3>Tudo certo, sua reserva foi agendada! Agora algumas coisas que você precisa saber sobre a hospedagem do seu animal:</h3>
+
+            <ul class="obs-hospedagem">
+                <li>O check-in pode ser feito das 14h00 às 18h00 e o check-out até às 11h00;</li>
+                <li>Caso você atrase para o check-in, ou haja necessidade de check-out fora do horário definido, é preciso avisar os funcionários do hotel;</li>
+                <li>Quando chegar ao hotel, você precisará repassar todos os seus dados e do seu animal com a funcionária da recepção;</li>
+                <li>Você deve trazer todo o material necessário para o cuidado do seu cachorro (alimentação, higiene, medicamentos etc.).</li>
+            </ul>
+            <button id="btn-concluir" type="submit" name="concluir" class="btn">Concluir</button>
+        </main>
+
+        <footer th:include="layout :: footer"></footer>
+
+        <div th:include="layout :: imports"></div>
+    </body>
+</html>
