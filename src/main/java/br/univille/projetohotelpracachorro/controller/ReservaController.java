@@ -86,19 +86,24 @@ public class ReservaController {
         return new ModelAndView("reserva/form", dados);
     }
 
-    /*
-     * @PostMapping(params = "form")
-     * public ModelAndView save(ReservaDTO reserva){
-     * System.out.println(reserva.getDataEntrada());
-     * reservaService.save(reserva);
-     * return new ModelAndView("redirect:/reservas");
-     * }
-     */
+    
+    @PostMapping(params = "concluir")
+      public ModelAndView form() {
 
-    @PostMapping(params = "save")
-    public ModelAndView save(ReservaDTO reserva) {
+      return new ModelAndView("redirect:/reservas");
+    }
+    
+    @GetMapping("/agendada")
+    public ModelAndView reservaAgendada() {
+        return new ModelAndView("reserva/confirmacao");
+
+    }
+     
+
+    @PostMapping(params = "confirmar")
+    public ModelAndView confirmar(ReservaDTO reserva) {
         reservaService.save(reserva);
-        return new ModelAndView("redirect:/reservas");
+        return new ModelAndView("redirect:/reservas/agendada");
     }
 
     @PostMapping(params = "vincservico")
@@ -192,11 +197,4 @@ public class ReservaController {
 
         return new ModelAndView("redirect:/reservas");
     }
-
-    @GetMapping("/agendada")
-    public ModelAndView reservaAgendada() {
-        return new ModelAndView("reserva/confirmacao");
-    
-    }
-
 }
