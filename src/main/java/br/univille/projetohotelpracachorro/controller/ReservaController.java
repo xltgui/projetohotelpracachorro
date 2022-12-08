@@ -197,7 +197,4 @@ public class ReservaController {
 
         return new ModelAndView("redirect:/reservas");
     }
-
-    
-
 }
