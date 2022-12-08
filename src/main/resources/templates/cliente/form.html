@@ -30,14 +30,14 @@
             <div class="form-group form-group_duplo row mb-3">
                 <div class="col-6">
                     <label class="fw-semibold" for="txtcpf">CPF</label>
-                    <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}" required>
+                    <input type="text" class="form-control" id="txtcpf" placeholder="000.000.000-00" th:field="*{CPF}" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
                     <div class="invalid-feedback">
                         Preencha este campo
                     </div>
                 </div>
                 <div class="col-6">
                     <label class="fw-semibold" for="txtfone">Telefone</label>
-                    <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" th:field="${cliente.telefone}" required>
+                    <input type="text" class="form-control" id="txtfone" placeholder="(00) 00000-0000" pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}" th:field="${cliente.telefone}" required>
                     <div class="invalid-feedback">
                         Preencha este campo
                     </div>
