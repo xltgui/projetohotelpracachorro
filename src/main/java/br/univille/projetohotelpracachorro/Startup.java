@@ -1,5 +1,7 @@
 package br.univille.projetohotelpracachorro;
 
+import java.io.Console;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -9,9 +11,11 @@ import br.univille.projetohotelpracachorro.entity.Cachorro;
 import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.entity.Funcionario;
 import br.univille.projetohotelpracachorro.entity.Servico;
+import br.univille.projetohotelpracachorro.entity.Usuario;
 import br.univille.projetohotelpracachorro.repository.CachorroRepository;
 import br.univille.projetohotelpracachorro.repository.FuncionarioRepository;
 import br.univille.projetohotelpracachorro.repository.ServicoRepository;
+import br.univille.projetohotelpracachorro.repository.UsuarioRepository;
 
 @Component
 public class Startup {
@@ -25,8 +29,30 @@ public class Startup {
     @Autowired
     private CachorroRepository cachorroRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    
+    
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event){
+            if(usuarioRepository.findByNome("admin") == null){
+                var adminUser = new Usuario();
+                adminUser.setNome("admin");
+                adminUser.setSenha("admin2");
+                usuarioRepository.save(adminUser);
+                
+                
+            }
+
+            /*if(usuarioRepository.findByNome("usuario") == null){
+                var adminUser = new Usuario();
+                adminUser.setNome("usuario");
+                adminUser.setSenha("usuario");
+                usuarioRepository.save(adminUser);
+            }*/
+
+            
+
             if(!servicoRepository.findById(1l).isPresent()){
                 Servico servico = new Servico();
                 servico.setId(1l);
