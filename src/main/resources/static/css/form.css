@@ -71,4 +71,10 @@ input[type="date"]::-webkit-clear-button {
         height: 16px;
         display: block;
     }
+    .d-flex.justify-content-center.gap-2{
+        flex-direction: column;
+    }
+    .d-flex.justify-content-center.gap-2 > *{
+        width: fit-content;
+    }
 }

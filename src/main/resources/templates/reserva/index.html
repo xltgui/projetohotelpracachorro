@@ -4,19 +4,23 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav th:replace="layout :: menu-admin"></nav>
     <main class="container">
-        <a href="/reservas/novo" class="btn">Novo</a>
+        <div class="d-flex align-items-center justify-content-between  mb-2">
+            <h2>Reservas</h2>
+            <a href="/reservas/novo" class="btn">novo</a>
+        </div>
+        
         <table class="table" id="tabreservas">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Atendente</th>
                     <th>Data entrada</th>
                     <th>Data saída</th>
                     <th>Cliente</th>
                     <th>Cachorro</th>
                     <th>Serviços</th>
+                    <th>Atendente</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -56,9 +60,9 @@
                 
 
                 <td th:text="${umaReserva.getTotalReserva}"></td>
-                <td>
-                    <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
-                    <button class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
+                <td class="d-flex justify-content-center gap-2">
+                    <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
+                    <button style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
                 </td>
             </tbody>
 
@@ -76,8 +80,8 @@
               <p>Confirma a exclusão da reserva?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
-              <button type="button" class="btn" id="btnReservaSim">Sim</button>
+              <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" type="button" class="btn" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
+              <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnReservaSim">Sim</button>
             </div>
           </div>
         </div>
