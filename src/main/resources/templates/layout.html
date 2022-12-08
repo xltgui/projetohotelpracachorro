@@ -18,31 +18,31 @@
       <div class="header-inner d-flex flex-wrap justify-content-between py-3 mb-4 container gap-4">
           <ul class="d-flex w-100 gap-4 flex-wrap">
               <li>
-              <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/home">Home <span class="sr-only"></span></a>
               </li>
 
               <li>
-              <a class="nav-link" href="/clientes">Clientes</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/clientes">Clientes</a>
               </li>
 
               <li>
-              <a class="nav-link" href="/cachorros">Cachorros</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/cachorros">Cachorros</a>
               </li>
 
               <li>
-              <a class="nav-link" href="/funcionarios">Funcionarios</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/funcionarios">Funcionarios</a>
               </li>
 
               <li>
-              <a class="nav-link" href="/reservas">Reservas</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/reservas">Reservas</a>
               </li>
 
               <li>
-              <a class="nav-link" href="/servicos">Serviços</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/servicos">Serviços</a>
               </li>
 
               <li>
-              <a class="nav-link" href="/bancodedados">Database</a>
+              <a sec:authorize="${hasRole('ROLE_ADMIN')}" class="nav-link" href="/bancodedados">Database</a>
               </li>
         </ul>
         

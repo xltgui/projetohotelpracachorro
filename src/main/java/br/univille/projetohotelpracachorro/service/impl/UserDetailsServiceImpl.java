@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.univille.projetohotelpracachorro.repository.UsuarioRepository;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 @Service
 public class UserDetailsServiceImpl 
@@ -21,11 +23,14 @@ public class UserDetailsServiceImpl
     @Override
     public UserDetails loadUserByUsername(String username) 
             throws UsernameNotFoundException {
-        var umUsuario = repository.findByNome(username);
-
-        return new User(umUsuario.getNome(), 
+        var umUsuario = repository.findByUsuario(username);
+        var listaPapeis = new ArrayList<SimpleGrantedAuthority>();
+        for(var umPapel : umUsuario.getListaPapeis()){
+            listaPapeis.add(new SimpleGrantedAuthority("ROLE_" + umPapel.getPapel().toUpperCase()));
+        }
+        return new User(umUsuario.getUsuario(), 
                         umUsuario.getSenha(),
-                        new ArrayList<>());
+                        listaPapeis);
     }
 
 }

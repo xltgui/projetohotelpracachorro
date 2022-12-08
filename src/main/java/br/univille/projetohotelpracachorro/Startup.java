@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import br.univille.projetohotelpracachorro.entity.Cachorro;
 import br.univille.projetohotelpracachorro.entity.Cliente;
 import br.univille.projetohotelpracachorro.entity.Funcionario;
+import br.univille.projetohotelpracachorro.entity.Papel;
 import br.univille.projetohotelpracachorro.entity.Servico;
 import br.univille.projetohotelpracachorro.entity.Usuario;
 import br.univille.projetohotelpracachorro.repository.CachorroRepository;
@@ -35,14 +36,34 @@ public class Startup {
     
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event){
-            if(usuarioRepository.findByNome("admin") == null){
+            
+
+            if(usuarioRepository.findByUsuario("admin") == null){
                 var adminUser = new Usuario();
-                adminUser.setNome("admin");
-                adminUser.setSenha("admin2");
+                adminUser.setUsuario("admin");
+                adminUser.setSenha("admin");
+                
+
+                Papel papelAdmin = new Papel();
+                papelAdmin.setPapel("ADMIN");
+                
+                adminUser.getListaPapeis().add(papelAdmin);
                 usuarioRepository.save(adminUser);
-                
-                
             }
+
+            if(usuarioRepository.findByUsuario("usuario") == null){
+                var UsuarioUser = new Usuario();
+                UsuarioUser.setUsuario("usuario");
+                UsuarioUser.setSenha("usuario");
+                
+
+                Papel papelUsuario = new Papel();
+                papelUsuario.setPapel("USUARIO");
+
+                UsuarioUser.getListaPapeis().add(papelUsuario);
+                usuarioRepository.save(UsuarioUser);
+            }
+
 
             /*if(usuarioRepository.findByNome("usuario") == null){
                 var adminUser = new Usuario();

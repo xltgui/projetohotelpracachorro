@@ -9,6 +9,13 @@ import br.univille.projetohotelpracachorro.entity.Usuario;
 public interface UsuarioRepository 
     extends JpaRepository<Usuario,Long>{
 
-    Usuario findByNome(String nome);
+    //Usuario findByNome(String nome);
+
+    //select * from usuario where usuario.usuario = 'zezinho'
+    Usuario findByUsuario(String nome);
+    
+    //select * from usuario where 
+    //usuario.usuario = "zezinho" and usuario.senha = "1234"
+    Usuario findByUsuarioAndSenha(String nome, String senha);
 
 }
