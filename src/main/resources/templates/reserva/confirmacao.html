@@ -15,7 +15,7 @@
 
     <body>
         <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
-        <nav th:replace="layout :: menu-admin"></nav>
+        <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
         <main class="container" sec:authorize="${hasRole('ROLE_USUARIO')}">
             <h3>Tudo certo, sua reserva foi agendada! Agora algumas coisas que você precisa saber sobre a hospedagem do seu animal:</h3>
 
@@ -26,7 +26,7 @@
                 <li>Você deve trazer todo o material necessário para o cuidado do seu cachorro (alimentação, higiene, medicamentos etc.).</li>
             </ul>
             <form class="needs-validtion d-flex justify-content-end mb-2" th:action="@{/reservas/(form)}" method="POST" th:object="${reserva}" novalidate>
-                <button  sec:authorize="${hasRole('ROLE_ADMIN')}" id="btn-concluir" type="submit" name="concluir" class="btn">Concluir</button>
+                <button id="btn-concluir" type="submit" name="concluir" class="btn">Concluir</button>
             </form>
         </main>
 

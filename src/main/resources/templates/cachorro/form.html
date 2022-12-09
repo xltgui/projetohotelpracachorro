@@ -7,7 +7,7 @@
 
 <body>
     <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
-    <nav th:replace="layout :: menu-admin"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <main class="container">
         <div sec:authorize="${hasRole('ROLE_USUARIO')}" class="progresso d-flex gap-5 justify-content-center mb-4">
             <span class="progresso-1 text-bg-warning">1</span>

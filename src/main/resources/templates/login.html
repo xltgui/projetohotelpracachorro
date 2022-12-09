@@ -1,4 +1,16 @@
-<head th:replace="layout :: head"></head>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head th:include="layout :: head"></head>
+<body>
+  
+<style>
+  @media(min-width: 500px) {
+    .container {
+      max-width: 400px;
+    }
+  }
+</style>
+
 <div class="container">
   <img class="d-block mx-auto mb-5" th:src="@{/img/logo-BPC.svg}" alt="" width="60">
     <form class="form-signin" method="post" th:action="@{/login}">
@@ -16,12 +28,7 @@
         <button style="width: 100%;" class="btn btn-lg " type="submit">Entrar</button>
       </div>
     </form>
-
-    <style>
-      @media(min-width: 500px) {
-        .container {
-          max-width: 400px;
-        }
-      }
-    </style>
 </div>
+    <div th:include="layout :: imports"></div>
+</body>
+</html>

@@ -4,7 +4,8 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu-admin"></nav>
+    <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <main class="container">
         <div class="d-flex align-items-center justify-content-between  mb-2">
             <h2>Reservas</h2>

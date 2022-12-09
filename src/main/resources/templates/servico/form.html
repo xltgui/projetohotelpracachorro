@@ -6,7 +6,7 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu-admin"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
     <main class="container">
         <form th:action="@{/servicos/(form)}" method="POST" th:object="${servico}">
