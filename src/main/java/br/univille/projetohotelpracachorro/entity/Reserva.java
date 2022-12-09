@@ -96,7 +96,7 @@ public class Reserva {
         for(var umServ:listaServicos){
             totalServ += umServ.getValorServico();
         }
-        return (totalServ + valor) * getDiasPermanecentes();
+        return totalServ + (valor * getDiasPermanecentes());
     }
 
     public void setListaAtendentes(List<Funcionario> listaAtendentes) {
