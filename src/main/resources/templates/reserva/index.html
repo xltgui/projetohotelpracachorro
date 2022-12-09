@@ -6,19 +6,23 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <main class="container">
-        <a href="/reservas/novo" class="btn">Novo</a>
+        <div class="d-flex align-items-center justify-content-between  mb-2">
+            <h2>Reservas</h2>
+            <a href="/reservas/novo" class="btn">novo</a>
+        </div>
         <table class="table" id="tabreservas">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Atendente</th>
                     <th>Data entrada</th>
                     <th>Data saída</th>
                     <th>Cliente</th>
                     <th>Cachorro</th>
                     <th>Serviços</th>
+                    <th>Atendente</th>
                     <th>Total</th>
                     <th></th>
                 </tr>
@@ -28,11 +32,6 @@
             <tbody th:each="umaReserva : ${listaReservas}">
                 <td th:text="${umaReserva.id}"></td>
 
-                <td>
-                    <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
-                        <li th:text="${umAtendente.nome}"></li>
-                    </ul>
-                </td>
 
                 <td th:text="${umaReserva.dataEntrada}"></td>
 
@@ -55,12 +54,19 @@
                         <li th:text="${umServico?.nome}"></li>
                     </ul>
                 </td>
-                
+
+                <td>
+                    <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
+                        <li th:text="${umAtendente.nome}"></li>
+                    </ul>
+                </td>
+
+
 
                 <td th:text="${umaReserva.getTotalReserva}"></td>
-                <td>
-                    <a th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
-                    <button class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
+                <td class="d-flex justify-content-center gap-2">
+                    <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
+                    <button sec:authorize="${hasRole('ROLE_ADMIN')}" style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
                 </td>
             </tbody>
 
@@ -69,21 +75,21 @@
 
     <div class="modal" tabindex="-1" id="modalreserva">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Excluir reserva</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão da reserva?</p>
+                </div>
+                <div class="modal-footer">
+                    <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" type="button" class="btn" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
+              <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnReservaSim">Sim</button>
+                </div>
             </div>
-            <div class="modal-body">
-              <p>Confirma a exclusão da reserva?</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal" id="btnReservaNao">Não</button>
-              <button type="button" class="btn" id="btnReservaSim">Sim</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <footer th:include="layout :: footer"></footer>
     <div th:include="layout :: imports"></div>
     <script th:src="@{/js/scriptReservas.js}"></script>

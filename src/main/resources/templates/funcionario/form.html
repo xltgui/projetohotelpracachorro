@@ -6,29 +6,33 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
+    <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
     <main class="container">
         <form th:action="@{/funcionarios/(form)}" method="POST" th:object="${funcionario}">
             <input type="hidden" th:field="*{id}">
 
-            <div class="form-group">
-                <label for="txtnome">Nome</label>
+            <div class="form-group mb-2">
+                <label class="fw-semibold" for="txtnome">Nome:</label>
                 <input type="text" class="form-control" placeholder="Digite o nome" id="txtnome" th:field="*{nome}">
                 <p th:if="${#fields.hasErrors('nome')}"
                 th:errors="*{nome}"
                 class="alert alert-danger"></p>
             </div>
 
-            <div class="form-group">
-                <label for="txtfuncao">Função</label>
+            <div class="form-group mb-2">
+                <label class="fw-semibold" for="txtfuncao">Função:</label>
                 <input type="text" class="form-control" placeholder="Digite a função" id="txtfuncao" th:field="*{funcao}">
             </div>
 
             <div class="form-group">
-                <label for="txtavaliacao">Avaliação</label>
+                <label class="fw-semibold" for="txtavaliacao">Avaliação:</label>
                 <input type="number" class="form-control" id="txtavaliacao" autocomplete="off" th:field="*{avaliacao}" min="1" max="5"/> 
             </div>
-            <button type="submit" class="btn">Enviar</button>
+
+            <div class="d-flex justify-content-end mt-2">
+                <button type="submit" class="btn">Enviar</button>
+            </div>
             
         </form>
     </main>

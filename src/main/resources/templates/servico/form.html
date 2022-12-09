@@ -6,19 +6,25 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
+    <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
     <main class="container">
         <form th:action="@{/servicos/(form)}" method="POST" th:object="${servico}">
             <input type="hidden" th:field="*{id}">
 
-            <div class="form-group">
-                <label for="txtnome">Nome</label>
+            <h4 sec:authorize="${hasRole('ROLE_ADMIN')}" class="mb-4">Dados de serviço:</h4>
+
+            <div class="form-group mb-2">
+                <label class="fw-semibold" for="txtnome">Nome:</label>
                 <input type="text" class="form-control" id="txtnome" th:field="*{nome}">
             </div>
 
             <div class="form-group">
-                <label for="txtvalor">Valor</label>
-                <input type="number" id="txtvalor" th:field="*{valorServico}">
+                <label class="fw-semibold" for="txtvalor">Valor:</label>
+                <input type="number" id="txtvalor" class="form-control" th:field="*{valorServico}">
+            </div>
+            <div class="d-flex justify-content-end mt-2">
+                <button type="submit" class="btn">enviar</button>
             </div>
             <button type="submit" class="btn">enviar</button>
         </form>

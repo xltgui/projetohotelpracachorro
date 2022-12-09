@@ -41,6 +41,11 @@ p {
     border-radius: 20px;
 }
 
+.btn::first-letter {
+    text-transform: uppercase;
+}
+
+
 .btn:hover {
     background: black;
     color: #ffc107;

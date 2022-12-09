@@ -4,6 +4,10 @@ header .nav-link {
     color: #070707;
 }
 
+header .nav-link_normal {
+    text-transform: none;
+}
+
 header .nav-link:hover {
     color: #f39501;
 }
@@ -19,10 +23,6 @@ header {
     background-color: #ffffff;
     z-index: 99;
     min-width: 100%;
-}
-
-.header-inner {
-    max-width: 960px;
 }
 
 

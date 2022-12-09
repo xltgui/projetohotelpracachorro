@@ -6,9 +6,12 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav th:replace="layout :: menu-admin"></nav>
     <main class="container">
-        <a href="/servicos/novo" class="btn">Novo</a>
+        <div class="d-flex align-items-center justify-content-between  mb-2">
+            <h2>Serviços</h2>
+            <a href="/servicos/novo" class="btn">novo</a>
+        </div>
         <table class="table" id="tabservicos">
             <thead>
                 <tr>

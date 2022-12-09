@@ -6,9 +6,12 @@
 <head th:include="layout :: head"></head>
 
 <body>
-    <nav th:replace="layout :: menu"></nav>
+  <nav th:replace="layout :: menu-admin"></nav>
     <main class="container">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <h2>Clientes</h2>
         <a href="/clientes/novo" class="btn">Novo</a>
+      </div>
         <table class="table" id="tabclientes">
             <thead>
                 <tr>
@@ -31,9 +34,9 @@
                         <li th:text="${umcachorro.nomeCachorro}"></li>
                       </ul>
                     </td>-->
-                    <td>
-                        <a th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn">Alterar</a>
-                <button class="btn js-delete" th:data-id="${cliente.id}">Excluir</button>
+                    <td class="d-flex justify-content-center gap-2">
+                      <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn">Alterar</a>
+                      <button style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${cliente.id}">Excluir</button>
                     </td>
                 </tr>
             </tbody>
@@ -51,8 +54,8 @@
               <p>Confirma a exclusão do cliente?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
-              <button type="button" class="btn" id="btnClienteSim">Sim</button>
+              <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" type="button" class="btn" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
+              <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnClienteSim">Sim</button>
             </div>
           </div>
         </div>

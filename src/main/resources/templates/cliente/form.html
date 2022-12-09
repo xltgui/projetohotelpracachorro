@@ -6,14 +6,16 @@
   <head th:include="layout :: head"></head>
 
   <body>
-    <nav th:replace="layout :: menu"></nav>
+    <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
+    <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <main class="container">
-        <div class="progresso d-flex gap-5 justify-content-center mb-4">
+        <div class="progresso d-flex gap-5 justify-content-center mb-4" sec:authorize="${hasRole('ROLE_USUARIO')}">
             <span class="progresso-1 text-bg-warning">1</span>
             <span class="progresso-2 text-bg-warning">2</span>
             <span class="progresso-3 text-bg-secondary">3</span>
         </div>
-        <h4 class="mb-4">Agora suas informações pessoais:</h4>
+        <h4 class="mb-4" sec:authorize="${hasRole('ROLE_USUARIO')}">Agora suas informações pessoais:</h4>
+        <h4 class="mb-4" sec:authorize="${hasRole('ROLE_ADMIN')}">Dados do cliente:</h4>
 
         <form class="w-50 mx-auto needs-validation position-relative" th:action="@{/clientes/(form)}" method="POST" th:object="${cliente}" novalidate>
 
@@ -21,7 +23,8 @@
 
             <div class="form-group mb-3">
                 <label class="fw-semibold" for="txtnome">Nome</label>
-                <input type="text" class="form-control" id="txtnome" placeholder="Digite seu nome" th:field="*{nome}" required>
+                <input  sec:authorize="${hasRole('ROLE_USUARIO')}" type="text" class="form-control" id="txtnome" placeholder="Digite seu nome" th:field="*{nome}" required>
+                <input  sec:authorize="${hasRole('ROLE_ADMIN')}" type="text" class="form-control" id="txtnome" placeholder="Digite o nome do cliente" th:field="*{nome}" required>
                 <div class="invalid-feedback">
                     Preencha este campo
                 </div>
