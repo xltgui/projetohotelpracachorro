@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+  <nav th:replace="layout :: menu-admin"></nav>
+    <main class="container">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <h2>Clientes</h2>
+        <a href="/clientes/novo" class="btn">Novo</a>
+      </div>
+        <table class="table" id="tabclientes">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Cpf</th>
+                    <th>Telefone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr th:each="cliente : ${listaClientes}">
+                    <td th:text="${cliente.id}"></td>
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.CPF}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                    <!--<td>
+                      <ul th:each="umcachorro : ${cliente.listaCachorros}">
+                        <li th:text="${umcachorro.nomeCachorro}"></li>
+                      </ul>
+                    </td>-->
+                    <td class="d-flex justify-content-center gap-2">
+                      <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/clientes/alterar/' + ${cliente.id}}" class="btn">Alterar</a>
+                      <button style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${cliente.id}">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div class="modal" tabindex="-1" id="modalcliente">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Excluir cliente</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Confirma a exclusão do cliente?</p>
+            </div>
+            <div class="modal-footer">
+              <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" type="button" class="btn" data-bs-dismiss="modal" id="btnClienteNao">Não</button>
+              <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnClienteSim">Sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptClientes.js}"></script>
+</body>
+
+</html>

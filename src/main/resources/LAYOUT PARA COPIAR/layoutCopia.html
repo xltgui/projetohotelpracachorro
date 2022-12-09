@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+<head th:include="layout :: head"></head>
+
+<body>
+    <nav th:replace="layout :: menu"></nav>
+    <nav th:replace="layout :: menu-usuario"></nav>
+    <nav th:replace="layout :: menu-admin"></nav>
+    <main class="container">
+
+    </main>
+    <footer th:include="layout :: footer"></footer>
+    <div th:include="layout :: imports"></div>
+</body>
+</html>

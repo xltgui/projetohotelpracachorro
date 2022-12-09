@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+
+
+<head th:include="layout :: head"></head>
+
+<body>
+  <nav th:replace="layout :: menu-admin"></nav>
+  <main class="container">
+    <div class="d-flex align-items-center justify-content-between  mb-2">
+      <h2>Cachorros</h2>
+      <a href="/cachorros/novo" class="btn">Novo</a>
+    </div>
+
+    <table class="table" id="tabcachorros">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Peso</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="umCachorro : ${listaCachorros}">
+          <td th:text="${umCachorro.id}"></td>
+          <td th:text="${umCachorro.nomeCachorro}"></td>
+          <td th:text="${umCachorro.peso}"></td>
+          <td class="d-flex justify-content-center gap-2">
+            <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;"
+              th:href="@{'/cachorros/alterar/' + ${umCachorro.id}}" class="btn">Alterar</a>
+            <button style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete"
+              th:data-id="${umCachorro.id}">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <div class="modal" tabindex="-1" id="modalcachorro">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Excluir funcionário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Confirma a exclusão do funcionário?</p>
+        </div>
+        <div class="modal-footer">
+          <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;"type="button" class="btn" data-bs-dismiss="modal" id="btnCachorroNao">Não</button>
+          <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnCachorroSim">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer th:include="layout :: footer"></footer>
+  <div th:include="layout :: imports"></div>
+  <script th:src="@{/js/scriptCachorros.js}"></script>
+</body>
+
+</html>

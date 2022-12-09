@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head th:include="layout :: head"></head>
+
+<body>
+
+    <style>
+        @media(min-width: 500px) {
+            .container {
+                max-width: 400px;
+            }
+        }
+    </style>
+
+    <div class="container">
+        <img class="d-block mx-auto mb-5" th:src="@{/img/logo-BPC.svg}" alt="" width="60">
+        <form class="form-signin" method="post" th:action="@{/login}">
+            <h2 class="form-signin-heading">Faça seu login</h2>
+            <p>
+                <label for="username" class="sr-only fw-semibold mb-2">Usuário</label>
+                <input type="text" id="username" name="username" class="form-control" required autofocus>
+            </p>
+            <p>
+                <label for="password" class="sr-only fw-semibold">Senha</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </p>
+            <div class="d-flex  justify-content-end mt-2">
+
+                <button style="width: 100%;" class="btn btn-lg " type="submit">Entrar</button>
+            </div>
+        </form>
+
+    </div>
+    <div th:include="layout :: imports"></div>
+</body>
+
+</html>

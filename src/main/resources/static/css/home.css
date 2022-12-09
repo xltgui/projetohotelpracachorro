@@ -1,0 +1,247 @@
+#apresentacao {
+    padding: 80px 0 60px;
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    align-items: center;
+    gap: 2rem;
+}
+
+#apresentacao div:first-child {
+    padding: 40px 35px;
+    background: linear-gradient(180deg, #edab10 0%, #ee9809 100%);
+    border-radius: 20px;
+}
+
+p {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+#apresentacao div:last-child {
+    width: 100%;
+}
+
+#apresentacao img {
+    object-fit: contain;
+    width: 100%;
+    max-height: 400px;
+}
+
+/* RESERVAS */
+#reserva {
+    padding: 60px 0 60px;
+}
+
+#reserva div {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+div[class*="porte"] {
+    position: relative;
+    color: #000;
+    height: 230px;
+    border-radius: 20px;
+    background-position: center 60%;
+    background-size: cover;
+    overflow: hidden;
+}
+
+@media (min-width: 1140px) {
+    #reserva div {
+        gap: 2rem;
+    }
+    div[class*="porte"] {
+        height: 280px;
+        border-radius: 20px;
+        background-position: center 60%;
+        background-size: cover;
+    }
+}
+div[class*="porte"] h3 {
+    z-index: 5;
+    font-size: calc(1.3rem + 0.3vw);
+}
+
+#reserva .decorador {
+    position: absolute;
+    height: 300px;
+    bottom: -220px;
+    background: linear-gradient(180deg, #edab10 0%, #ee9809 100%);
+    border-radius: 50%;
+}
+
+.porte-p {
+    background-image: url(../img/porte-1.avif);
+}
+
+.porte-m {
+    background-image: url(../img/porte-2.avif);
+}
+
+.porte-g {
+    background-image: url(../img/porte-3.avif);
+}
+
+/* ADICIONAIS */
+#adicionais {
+    padding: 60px 0 60px;
+}
+
+.lista-servicos {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.lista-servicos li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+    gap: 12px;
+}
+
+.lista-servicos li img {
+    object-fit: contain;
+}
+
+/* AVALIACOES */
+#avaliacoes {
+    padding: 60px 0 120px;
+}
+
+.card-funcionario_paragrafo {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+ .card-funcionario_paragrafo:after {
+    content: "\2012" attr(data-nomeAvaliador);
+    display: block;
+    text-align: right;
+    font-size: 14px;
+}
+
+#avaliacoes h3 {
+    color: #f1ab12;
+    margin-bottom: 0;
+}
+
+#avaliacoes .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    justify-content: center;
+}
+
+.card-funcionario {
+    padding: 30px 20px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 6px 8px rgba(19, 19, 19, 0.151);
+}
+
+.card-funcionario img {
+    border-radius: 50%;
+    width: 120px;
+}
+
+/* CONTATO */
+.contato-bg {
+    min-width: 100%;
+    background: #f1ab12;
+}
+
+#contato h1 {
+    grid-area: titulo;
+}
+
+#form-contato {
+    grid-area: form;
+    max-width: 450px;
+}
+
+.lista-contatos-wrapper {
+    grid-area: lista;
+}
+
+#contato {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "titulo titulo"
+        "form lista";
+    align-items: center;
+    gap: 2em;
+    padding: 80px 1em;
+    max-width: 960px;
+    margin: 0 auto;
+    color: #261200;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+#contato .form-control {
+    background-color: #ffe9ba;
+    font-family: "Roboto", sans-serif;
+}
+
+.btn-enviar,
+#btn-reserva {
+    background-color: #0f0700;
+    color: #ffa820;
+    border-radius: 20px;
+}
+
+.lista-contatos li {
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lista-contatos img {
+    object-fit: contain;
+}
+
+@media (max-width: 991px) {
+    #apresentacao {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #apresentacao {
+        grid-template-columns: 1fr;
+        padding: 22px 0 40px;
+    }
+    #reserva,
+    #adicionais,
+    #avaliacoes {
+        padding: 80px 0 80px;
+    }
+    #apresentacao img {
+        display: none;
+    }
+    #adicionais {
+        flex-direction: column;
+        gap: 30px;
+    }
+    #adicionais > div:nth-child(1) {
+        max-width: none !important;
+        align-self: flex-start;
+    }
+    #contato {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "titulo"
+            "form"
+            "lista";
+    }
+    #contato {
+        max-width: 540px;
+    }
+    #form-contato {
+        max-width: none;
+    }
+}

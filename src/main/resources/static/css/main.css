@@ -1,0 +1,67 @@
+@import url(./layout.css);
+@import url(./home.css);
+@import url(./form.css);
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+ul,
+li {
+    list-style: none;
+    padding-left: 0;
+}
+
+h1 {
+    font-size: calc(1.375rem + 0.9vw);
+}
+
+a {
+    color: inherit;
+}
+
+.nav,
+.btn,
+label,
+h4,
+h3,
+h2,
+h1 {
+    font-family: "Poppins", sans-serif;
+    color: #0f0700;
+}
+
+p {
+    color: #070707;
+}
+
+.btn {
+    background-color: #0f0700;
+    color: #ffa820;
+    border-radius: 20px;
+}
+
+.btn::first-letter {
+    text-transform: uppercase;
+}
+
+
+.btn:hover {
+    background: black;
+    color: #ffc107;
+}
+
+.progresso .text-bg-warning::before {
+    background: #ffc107;
+}
+
+.progresso .text-bg-secondary::before {
+    background: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 97% !important;
+        margin: 0 auto;
+    }
+}
