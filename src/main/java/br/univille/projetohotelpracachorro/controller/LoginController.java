@@ -16,7 +16,7 @@ public class LoginController {
 
             return "home";
         }
-        return "login";
+        return "login/index";
     }
 
     private User getPrincipal() {
