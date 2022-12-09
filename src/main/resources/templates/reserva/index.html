@@ -13,64 +13,65 @@
             <h2>Reservas</h2>
             <a href="/reservas/novo" class="btn">novo</a>
         </div>
-        <table class="table" id="tabreservas">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Data entrada</th>
-                    <th>Data saída</th>
-                    <th>Cliente</th>
-                    <th>Cachorro</th>
-                    <th>Serviços</th>
-                    <th>Atendente</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-            </thead>
+        <div class="table-responsive">
+            <table class="table" id="tabreservas">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Data entrada</th>
+                        <th>Data saída</th>
+                        <th>Cliente</th>
+                        <th>Cachorro</th>
+                        <th>Serviços</th>
+                        <th>Atendente</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody th:each="umaReserva : ${listaReservas}">
+                    <td th:text="${umaReserva.id}"></td>
 
 
-            <tbody th:each="umaReserva : ${listaReservas}">
-                <td th:text="${umaReserva.id}"></td>
+                    <td th:text="${umaReserva.dataEntrada}"></td>
 
+                    <td th:text="${umaReserva.dataSaida}"></td>
 
-                <td th:text="${umaReserva.dataEntrada}"></td>
+                    <td>
+                        <ul th:each="umCliente : ${umaReserva.listaClientes}">
+                            <li th:text="${umCliente.nome}"></li>
+                        </ul>
+                    </td>
 
-                <td th:text="${umaReserva.dataSaida}"></td>
+                    <td>
+                        <ul th:each="umCachorro : ${umaReserva.Cachorro}">
+                            <li th:text="${umCachorro.nomeCachorro}"></li>
+                        </ul>
+                    </td>
 
-                <td>
-                    <ul th:each="umCliente : ${umaReserva.listaClientes}">
-                        <li th:text="${umCliente.nome}"></li>
-                    </ul>
-                </td>
+                    <td>
+                        <ul th:each="umServico : ${umaReserva.listaServicos}">
+                            <li th:text="${umServico?.nome}"></li>
+                        </ul>
+                    </td>
 
-                <td>
-                    <ul th:each="umCachorro : ${umaReserva.Cachorro}">
-                        <li th:text="${umCachorro.nomeCachorro}"></li>
-                    </ul>
-                </td>
+                    <td>
+                        <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
+                            <li th:text="${umAtendente.nome}"></li>
+                        </ul>
+                    </td>
 
-                <td>
-                    <ul th:each="umServico : ${umaReserva.listaServicos}">
-                        <li th:text="${umServico?.nome}"></li>
-                    </ul>
-                </td>
+                    <td th:text="${umaReserva.getTotalReserva}"></td>
+                    <td style="vertical-align: middle;">
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
+                            <button sec:authorize="${hasRole('ROLE_ADMIN')}" style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
+                        </div>          
+                    </td>
+                </tbody>
 
-                <td>
-                    <ul th:each="umAtendente : ${umaReserva.listaAtendentes}">
-                        <li th:text="${umAtendente.nome}"></li>
-                    </ul>
-                </td>
-
-
-
-                <td th:text="${umaReserva.getTotalReserva}"></td>
-                <td class="d-flex justify-content-center gap-2">
-                    <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" th:href="@{'/reservas/alterar/' + ${umaReserva.id}}" class="btn">Alterar</a>
-                    <button sec:authorize="${hasRole('ROLE_ADMIN')}" style="background-color: #6c757d; color: white; border-radius: 8px;" class="btn js-delete" th:data-id="${umaReserva.id}">Excluir</button>
-                </td>
-            </tbody>
-
-        </table>
+            </table>
+        </div>
     </main>
 
     <div class="modal" tabindex="-1" id="modalreserva">

@@ -143,7 +143,7 @@ div[class*="porte"] h3 {
 
 .card-funcionario img {
     border-radius: 50%;
-    width: 120px;
+    width: 120px !important;
 }
 
 /* CONTATO */

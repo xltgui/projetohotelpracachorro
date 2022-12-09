@@ -39,13 +39,14 @@
 			}    
 		    
 		}
+		const Difference_In_Time = transformData(inputDataSaida.value).getTime() - transformData(inputDataEntrada.value).getTime();
+		totalInterno *= Difference_In_Time / (1000 * 3600 * 24);
+		
 		totalInterno += (
 			Number(checkboxTaxiDog.checked) * checkboxTaxiDogValue + 
 			Number(checkboxBanhoTosa.checked) * checkboxBanhoTosaValue +
 			Number(checkboxMedicacao.checked) * checkboxMedicacaoValue
 		);
-		const Difference_In_Time = transformData(inputDataSaida.value).getTime() - transformData(inputDataEntrada.value).getTime();
-		totalInterno *= Difference_In_Time / (1000 * 3600 * 24);
 	
 		totalServicosReservaSelector.innerText =Number.isNaN(totalInterno)?0: totalInterno
 		total = totalInterno

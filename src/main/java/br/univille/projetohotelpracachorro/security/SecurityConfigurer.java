@@ -1,5 +1,7 @@
 package br.univille.projetohotelpracachorro.security;
 
+import javax.annotation.security.PermitAll;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,32 +13,36 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-public class SecurityConfigurer
-        extends WebSecurityConfigurerAdapter {
-    // WebSecurityConfigurerAdapter
+public class SecurityConfigurer 
+    extends WebSecurityConfigurerAdapter{
+        //WebSecurityConfigurerAdapter
     @Autowired
     private UserDetailsService service;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(service);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/home")
-                .permitAll();
-
+        http.authorizeRequests().antMatchers("/").permitAll()
+            .antMatchers("/resources/**").permitAll()
+            .antMatchers("/css/**").permitAll()
+            .antMatchers("/img/**").permitAll()
+            .antMatchers("/js/**").permitAll()
+            .antMatchers("/webjars/**").permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/home")
+            .permitAll();
+        
     }
 }
