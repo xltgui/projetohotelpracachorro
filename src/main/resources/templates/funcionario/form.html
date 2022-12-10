@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
 
-</html>
-
 <head th:include="layout :: head"></head>
 
 <body>
     <nav sec:authorize="${hasRole('ROLE_ADMIN')}" th:replace="layout :: menu-admin"></nav>
     <nav sec:authorize="${hasRole('ROLE_USUARIO')}" th:replace="layout :: menu-usuario"></nav>
     <main class="container">
+        <h4>Dados do funcionário:</h4>
         <form th:action="@{/funcionarios/(form)}" method="POST" th:object="${funcionario}">
             <input type="hidden" th:field="*{id}">
 
