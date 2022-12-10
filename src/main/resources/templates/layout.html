@@ -29,9 +29,22 @@
                     <li class="nav-item"><a href="/home#adicionais" class="nav-link">serviços adicionais</a></li>
                     <li class="nav-item"><a href="/home#avaliacoes" class="nav-link">equipe</a></li>
                     <li class="nav-item"><a href="/home#contato" class="nav-link">contato</a></li>
-                    <li class="nav-item"><a sec:authorize="${hasRole('ROLE_ADMIN')}" href="#" class="nav-link " style="background-color: #462100; border-radius: 30px; color: #ffcd7b;">
-                        <svg fill="#ffcd7b" width="25" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 459 459" viewBox="0 0 459 459"><path d="M229.5 0C102.53 0 0 102.845 0 229.5 0 356.301 102.719 459 229.5 459 356.851 459 459 355.815 459 229.5 459 102.547 356.079 0 229.5 0zm118.101 364.67C314.887 393.338 273.4 409 229.5 409c-43.892 0-85.372-15.657-118.083-44.314a16.37 16.37 0 0 1-5.245-15.597c11.3-55.195 46.457-98.725 91.209-113.047C174.028 222.218 158 193.817 158 161c0-46.392 32.012-84 71.5-84s71.5 37.608 71.5 84c0 32.812-16.023 61.209-39.369 75.035 44.751 14.319 79.909 57.848 91.213 113.038a16.39 16.39 0 0 1-5.243 15.597z"/></svg>
-                        Admin</a>
+                    <li class="nav-item" sec:authorize="${hasRole('ROLE_ADMIN')}">
+                        <div class="dropdown">
+                            <a style="background-color: #462100; border-radius: 30px; color: #ffcd7b;" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <svg fill="#ffcd7b" width="25" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 459 459" viewBox="0 0 459 459"><path d="M229.5 0C102.53 0 0 102.845 0 229.5 0 356.301 102.719 459 229.5 459 356.851 459 459 355.815 459 229.5 459 102.547 356.079 0 229.5 0zm118.101 364.67C314.887 393.338 273.4 409 229.5 409c-43.892 0-85.372-15.657-118.083-44.314a16.37 16.37 0 0 1-5.245-15.597c11.3-55.195 46.457-98.725 91.209-113.047C174.028 222.218 158 193.817 158 161c0-46.392 32.012-84 71.5-84s71.5 37.608 71.5 84c0 32.812-16.023 61.209-39.369 75.035 44.751 14.319 79.909 57.848 91.213 113.038a16.39 16.39 0 0 1-5.243 15.597z"/></svg>
+                                Admin
+                            </a>
+                          
+                            <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/cachorros">Cachorros</a></li>
+                                    <li><a class="dropdown-item" href="/clientes">Clientes</a></li>
+                                    <li><a class="dropdown-item" href="/funcionarios">Funcionarios</a></li>
+                                    <li><a class="dropdown-item" href="/reservas">Reservas</a></li>
+                                    <li><a class="dropdown-item" href="/servicos">Serviços</a></li>
+                                    <li><a class="dropdown-item" href="/bancodedados">Database</a></li>
+                            </ul>
+                          </div>
                     </li>
                 </ul>
             </nav>
@@ -83,7 +96,7 @@
 
     <div th:fragment="imports">
         <script th:src="@{/webjars/jquery/3.6.1/dist/jquery.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/5.2.2/js/bootstrap.bundle.js}"></script>
     </div>
 
 </body>

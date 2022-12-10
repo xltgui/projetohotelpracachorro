@@ -11,7 +11,7 @@
     <main class="container">
         <div class="d-flex align-items-center justify-content-between  mb-2">
             <h2>Reservas</h2>
-            <a href="/reservas/novo" class="btn">novo</a>
+            <a sec:authorize="${hasRole('ROLE_ADMIN')}" href="/reservas/novo" class="btn">novo</a>
         </div>
         <div class="table-responsive">
             <table class="table" id="tabreservas">
