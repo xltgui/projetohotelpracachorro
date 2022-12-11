@@ -10,7 +10,7 @@
 	const inputDataSaida = document.getElementById("txtdatasaida");
 	//console.log(inputDataEntrada, inputDataSaida)	
 	const pesoCachorroSelect = document.getElementById("listaCachorrosSelect");
-	const pesoCachorro = Number(pesoCachorroSelect.options[pesoCachorroSelect.selectedIndex].text)
+	const pesoCachorro = Number(pesoCachorroSelect.options[pesoCachorroSelect.selectedIndex].innerText)
 
 	let totalServicosReservaSelector = document.getElementById("total-reserva");
 	

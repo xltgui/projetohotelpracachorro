@@ -112,6 +112,28 @@ public class Startup {
                 funcionarioRepository.save(funcionario);
                 
             }
+            if(!funcionarioRepository.findById(2l).isPresent()){
+                Funcionario funcionario = new Funcionario();
+
+                funcionario.setId(2l);
+                funcionario.setFuncao("Atendente");
+                funcionario.setNome("Mirella");
+                funcionario.setAvaliacao(3);
+
+                funcionarioRepository.save(funcionario);
+                
+            }
+            if(!funcionarioRepository.findById(3l).isPresent()){
+                Funcionario funcionario = new Funcionario();
+
+                funcionario.setId(3l);
+                funcionario.setFuncao("Atendente");
+                funcionario.setNome("Stephany");
+                funcionario.setAvaliacao(4);
+
+                funcionarioRepository.save(funcionario);
+                
+            }
             if(!cachorroRepository.findById(1l).isPresent()){
                 Cachorro cachorro = new Cachorro();
 
