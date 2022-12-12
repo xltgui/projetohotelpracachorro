@@ -74,8 +74,8 @@ input[type="date"]::-webkit-clear-button {
     .d-flex.justify-content-center.gap-2{
         flex-direction: column;
     }
-    .d-flex.justify-content-center.gap-2 > *{
-        width: fit-content;
+    tbody .d-flex.justify-content-center.gap-2 > *{
+        /* width: fit-content; */
     }
     .container form.w-50 {
         width: 97% !important;

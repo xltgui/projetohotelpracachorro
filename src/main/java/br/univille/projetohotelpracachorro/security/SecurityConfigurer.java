@@ -34,6 +34,7 @@ public class SecurityConfigurer
             .antMatchers("/img/**").permitAll()
             .antMatchers("/js/**").permitAll()
             .antMatchers("/webjars/**").permitAll()
+            .antMatchers("/h2-console/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -41,6 +42,9 @@ public class SecurityConfigurer
                 .loginPage("/login")
                 .defaultSuccessUrl("/home")
                 .permitAll();
+
+                http.csrf().disable();
+        http.headers().frameOptions().disable();
 
     }
 }
