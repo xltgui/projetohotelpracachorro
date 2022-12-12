@@ -12,8 +12,15 @@ header .nav-link:hover {
     color: #f39501;
 }
 
-header .nav-item:nth-child(2) {
+.nav-pills .nav-item:nth-child(2) .nav-link {
     color: #f39501;
+    font-weight: 500;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #ee990a;
+    color: #000;
 }
 
 header {
@@ -24,7 +31,6 @@ header {
     z-index: 99;
     min-width: 100%;
 }
-
 
 /* footer */
 footer {
@@ -41,11 +47,17 @@ footer a {
     width: 50px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     header ul.nav {
         justify-content: center;
         gap: 0.8em;
     }
+    header a {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
     header .nav .nav-link {
         background: #ececec;
         padding: 4px 14px;
