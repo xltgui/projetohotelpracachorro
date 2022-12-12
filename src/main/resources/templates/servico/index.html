@@ -18,6 +18,7 @@
                     <th>Id</th>
                     <th>Serviço</th>
                     <th>Valor</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -26,13 +27,40 @@
                     <td th:text="${umServico.id}"></td>
                     <td th:text="${umServico.nome}"></td>
                     <td th:text="${umServico.valorServico}"></td>
+                    <td style="vertical-align: middle;">
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;"
+                                th:href="@{'/servicos/alterar/' + ${umServico.id}}" class="btn">Alterar</a>
+                            <button sec:authorize="${hasRole('ROLE_ADMIN')}"
+                                style="background-color: #6c757d; color: white; border-radius: 8px;"
+                                class="btn js-delete" th:data-id="${umServico.id}">Excluir</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
 
         </table>
     </main>
+    <div class="modal" tabindex="-1" id="modalservico">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Excluir reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirma a exclusão da reserva?</p>
+                </div>
+                <div class="modal-footer">
+                    <button style="background-color: #ffc107; color: black; border-radius: 8px; font-weight: 500;" type="button" class="btn" data-bs-dismiss="modal" id="btnServicoNao">Não</button>
+              <button style="background-color: #6c757d; color: white; border-radius: 8px;" type="button" class="btn" id="btnServicoSim">Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer th:include="layout :: footer"></footer>
     <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/scriptServicos.js}"></script>
 </body>
 
 </html>
