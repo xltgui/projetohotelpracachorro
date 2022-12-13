@@ -10,7 +10,7 @@
 	const inputDataSaida = document.getElementById("txtdatasaida");
 	//console.log(inputDataEntrada, inputDataSaida)	
 	const pesoCachorroSelect = document.getElementById("listaCachorrosSelect");
-	const pesoCachorro = Number(pesoCachorroSelect.options[pesoCachorroSelect.selectedIndex].text)
+	const pesoCachorro = Number(pesoCachorroSelect.options[pesoCachorroSelect.selectedIndex].innerText)
 
 	let totalServicosReservaSelector = document.getElementById("total-reserva");
 	
@@ -39,6 +39,7 @@
 			}    
 		    
 		}
+
 		const Difference_In_Time = transformData(inputDataSaida.value).getTime() - transformData(inputDataEntrada.value).getTime();
 		totalInterno *= Difference_In_Time / (1000 * 3600 * 24);
 		
@@ -49,6 +50,7 @@
 		);
 	
 		totalServicosReservaSelector.innerText =Number.isNaN(totalInterno)?0: totalInterno
+
 		total = totalInterno
 
 	}

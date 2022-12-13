@@ -56,7 +56,7 @@
             <div class="form-group mb-4">
                 <label sec:authorize="${hasRole('ROLE_USUARIO')}" class="fw-semibold" for="txtatendente">Por quem você quer ser atendido?</label>
                 <label sec:authorize="${hasRole('ROLE_ADMIN')}" class="fw-semibold" for="txtatendente">Funcionário:</label>
-                <select th:field="*{listaAtendentes}" class="form-select" required>
+                <select id="txtatendente" th:field="*{listaAtendentes}" class="form-select" required>
                     <option th:each="umAtendente : ${listaAtendentes}" th:value="${umAtendente.id}"
                         th:text="${umAtendente.nome}">
                     </option>

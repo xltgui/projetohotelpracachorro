@@ -91,7 +91,7 @@ input[type="date"]::-webkit-clear-button {
     .d-flex.justify-content-center.gap-2 > * {
         width: fit-content;
     }
-    form.w-50 {
+    .container form.w-50 {
         width: 97% !important;
     }
 }

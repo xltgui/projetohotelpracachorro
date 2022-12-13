@@ -36,13 +36,16 @@ public class SecurityConfigurer
             .antMatchers("/img/**").permitAll()
             .antMatchers("/js/**").permitAll()
             .antMatchers("/webjars/**").permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .defaultSuccessUrl("/home")
-            .permitAll();
-        
+            .antMatchers("/h2-console/**").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .permitAll();
+
+                http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
