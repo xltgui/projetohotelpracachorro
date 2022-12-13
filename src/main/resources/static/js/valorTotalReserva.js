@@ -39,7 +39,7 @@
 			}    
 		    
 		}
-		
+
 		const Difference_In_Time = transformData(inputDataSaida.value).getTime() - transformData(inputDataEntrada.value).getTime();
 		totalInterno *= Difference_In_Time / (1000 * 3600 * 24);
 		
