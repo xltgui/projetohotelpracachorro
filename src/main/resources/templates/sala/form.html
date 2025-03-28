@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http:://www.ultraq.net.nz/thymeleaf/layout">
+
+</html>
+
+<head th:include="layout :: head"></head>
+
+<body>
+    <main class="container">
+        <div>
+            <h4 class="mb-4">Informações da sala:</h4>
+            <form th:action="@{/ensalamento/(form)}" method="POST" th:object="${sala}" class="w-50 mx-auto needs-validation" novalidate>
+                <input type="hidden" th:field="*{id}">
+
+                <div class="form-group mb-3">
+                    <label class="fw-semibold" for="txtnome">Nome</label>
+                    <input type="text" class="form-control" id="txtnome" placeholder="Digite o nome da sala" th:field="*{nomeSala}" required>
+                    <div class="invalid-feedback">
+                        Preencha este campo
+                    </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Horário 1</label>
+                    <input type="text" class="form-control" th:field="*{horarios[0].horario}" placeholder="19:00 - 20:30" disabled>
+                    <input type="text" class="form-control" th:field="*{horarios[0].professor}" placeholder="Professor" required>
+                    <input type="text" class="form-control" th:field="*{horarios[0].materia}" placeholder="Matéria" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="fw-semibold">Horário 2</label>
+                    <input type="text" class="form-control" th:field="*{horarios[1].horario}" placeholder="20:50 - 22:30" disabled>
+                    <input type="text" class="form-control" th:field="*{horarios[1].professor}" placeholder="Professor" required>
+                    <input type="text" class="form-control" th:field="*{horarios[1].materia}" placeholder="Matéria" required>
+                </div>
+
+                <div class="d-flex justify-content-end"><button type="submit" name="continuar" href="http://localhost:8080/ensalamento/salas" class="btn btn-continuar">Salvar</button></div>
+
+            </form>
+        </div>
+    </main>
+<!--    <footer th:include="layout :: footer"></footer>-->
+    <div th:include="layout :: imports"></div>
+    <script th:src="@{/js/validacaoForms.js}"></script>
+</body>
